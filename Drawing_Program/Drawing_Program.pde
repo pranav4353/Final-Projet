@@ -106,9 +106,9 @@ void setup()
   if ( heightLarger1 == true ) imageWidthRatio1 = imageLargerDimension1/imageLargerDimension1;
   //
   imgX1 = centerX+appWidth*15/40;
-  imgY1 = appHeight*0;
-  imgWidth1 = buttonWidth/2;
-  imgHeight1 = buttonHeight;
+  imgY1 = appHeight/10;
+  imgWidth1 = buttonWidth1;
+  imgHeight1 = buttonHeight1;
   picWidthAdjusted1 = imgWidth * imageWidthRatio;
   picHeightAdjusted1 = imgHeight * imageHeightRatio;
   //
