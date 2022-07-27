@@ -7,5 +7,5 @@ void colorSetup() {
   if ( redC==true ) stroke(red);
   if ( blackC==true ) stroke(black);
   if ( orangeC==true ) stroke(orange);
-  if ( eraseC==true ) stroke(resetBackground);
+  if ( eraseC==true ) stroke(backgroundColor);
 }

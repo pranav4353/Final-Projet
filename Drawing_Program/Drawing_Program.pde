@@ -7,15 +7,21 @@ import ddf.minim.ugens.*;
 
 
 //Global Variables
-PImage pic, pic1, pic2;
+PImage pic, pic1, pic2, pic3, pic4, pic5, pic6;
 float appHeight, appWidth;
 float imgX, imgY, imgWidth, imgHeight, imageLargerDimension, imageSmallerDimension, imageWidthRatio=0.0, imageHeightRatio=0.0;
 float imgX1, imgY1, imgWidth1, imgHeight1, imageLargerDimension1, imageSmallerDimension1, imageWidthRatio1=0.0, imageHeightRatio1=0.0;
 float imgX2, imgY2, imgWidth2, imgHeight2, imageLargerDimension2, imageSmallerDimension2, imageWidthRatio2=0.0, imageHeightRatio2=0.0;
+float imgX3, imgY3, imgWidth3, imgHeight3, imageLargerDimension3, imageSmallerDimension3, imageWidthRatio3=0.0, imageHeightRatio3=0.0;
+float imgX4, imgY4, imgWidth4, imgHeight4, imageLargerDimension4, imageSmallerDimension4, imageWidthRatio4=0.0, imageHeightRatio4=0.0;
+float imgX5, imgY5, imgWidth5, imgHeight5, imageLargerDimension5, imageSmallerDimension5, imageWidthRatio5=0.0, imageHeightRatio5=0.0;
+float imgX6, imgY6, imgWidth6, imgHeight6, imageLargerDimension6, imageSmallerDimension6, imageWidthRatio6=0.0, imageHeightRatio6=0.0;
 float drawingSurfaceX, drawingSurfaceY, drawingSurfaceWidth, drawingSurfaceHeight, drawingDiameter;
 float buttonX, buttonY, buttonWidth, buttonHeight;
 float buttonX1, buttonY1, buttonWidth1, buttonHeight1;
+float buttonX2, buttonY2, buttonWidth2, buttonHeight2;
 float colorRectX, colorRectY, colorRectWidth, colorRectHeight;
+float colorRectX1, colorRectY1, colorRectWidth1, colorRectHeight1;
 float colorX, colorY, colorWidth, colorHeight;
 float colorX1, colorY1, colorWidth1, colorHeight1;
 float colorX2, colorY2, colorWidth2, colorHeight2;
@@ -30,12 +36,17 @@ float strokeX1, strokeY1, strokeWidth1, strokeHeight1;
 float strokeX2, strokeY2, strokeWidth2, strokeHeight2;
 float strokeX3, strokeY3, strokeWidth3, strokeHeight3;
 float strokeX4, strokeY4, strokeWidth4, strokeHeight4;
-float picWidthAdjusted, picHeightAdjusted, picWidthAdjusted1, picHeightAdjusted1, picWidthAdjusted2, picHeightAdjusted2;
-Boolean widthLarger = false, heightLarger = false, widthLarger1 = false, heightLarger1 = false, widthLarger2 = false, heightLarger2 = false;
-Boolean draw=false, colorSelect=false;
+float strokeXZ, strokeYZ, strokeWidthZ, strokeHeightZ;
+float strokeXZ1, strokeYZ1, strokeWidthZ1, strokeHeightZ1;
+float strokeXZ2, strokeYZ2, strokeWidthZ2, strokeHeightZ2;
+float picWidthAdjusted, picHeightAdjusted, picWidthAdjusted1, picHeightAdjusted1, picWidthAdjusted2, picHeightAdjusted2, picWidthAdjusted3, picHeightAdjusted3, picWidthAdjusted4, picHeightAdjusted4, picWidthAdjusted5, picHeightAdjusted5, picWidthAdjusted6, picHeightAdjusted6;
+float backGroundX, backGroundY, backGroundWidth, backGroundHeight; 
+Boolean widthLarger = false, heightLarger = false, widthLarger1 = false, heightLarger1 = false, widthLarger2 = false, heightLarger2 = false, widthLarger3 = false, heightLarger3 = false, widthLarger4 = false, heightLarger4 = false, widthLarger5 = false, heightLarger5 = false, widthLarger6 = false, heightLarger6 = false;
+Boolean draw=false, colorSelect=false, backGround=false, colorSelect1=false;
 Boolean yellowC=false, pinkC=false, greenC=false, orangeC=false, blueC=false, purpleC=false, redC=false, blackC=true, eraseC=false;
-Boolean stroke=true, stroke1=false, stroke2=false, stroke3=false, stroke4=false;
-color lightgreen1= #48A4BC, green1= #117659, resetButtonColour, buttonFill, resetWhite=#fcfcfc, gray=#5A5A5A, resetBackground=#fcfcfc;
+Boolean yellowC1=false, pinkC1=false, greenC1=false, orangeC1=false, blueC1=false, purpleC1=false, redC1=false, blackC1=false, whiteC1=true;
+Boolean stroke=true, stroke1=false, stroke2=false, stroke3=false, stroke4=false, run=false;
+color lightgreen1=#48A4BC, green1=#117659, resetButtonColour, buttonFill, resetWhite=#fcfcfc, gray=#5A5A5A, resetBackground=#fcfcfc, backgroundColor;
 color yellow=#F5E639, pink=#ED5DE6, green=#4CDE65, orange=#F5B128, blue=#2545F5, purple=#A11EE8, red=#E8251E, black=#000000;
 //
 void setup() 
@@ -64,15 +75,27 @@ void setup()
   buttonHeight = appHeight/10;
   //
   buttonX1 = centerX+appWidth*13/40;
-  buttonY1 = appHeight/10;
+  buttonY1 = buttonHeight;
   buttonWidth1 = appWidth*14/80;
   buttonHeight1 = appHeight/10;
+  //
+  buttonX2 = centerX+appWidth*13/40;
+  buttonY2 = buttonHeight*2;
+  buttonWidth2 = appWidth*14/80;
+  buttonHeight2 = appHeight/10;
   //
   colorRectX = centerX-appWidth*39/80;
   colorRectY = centerY+appHeight*7/20;
   colorRectWidth = appWidth*239/320;
   colorRectHeight = appHeight*5/40;
   //
+  colorRectX1 = centerX-appWidth*39/80;
+  colorRectY1 = centerY+appHeight*7/20;
+  colorRectWidth1 = appWidth*239/320;
+  colorRectHeight1 = appHeight*5/40;
+  //
+
+
   //color switches
 
   colorX = centerX-appWidth*39/80;
@@ -146,6 +169,20 @@ void setup()
   strokeWidth4 = colorRectHeight;
   strokeHeight4 = colorRectHeight/2;
   //
+  strokeXZ = (centerX-appWidth*39/80)+colorRectHeight*5;
+  strokeYZ = centerY+appHeight*7/20;
+  strokeWidthZ = colorRectWidth/6;
+  strokeHeightZ = colorRectHeight;
+  //
+  strokeXZ1 = (centerX-appWidth*39/80)+colorRectHeight*5+colorRectWidth/6;
+  strokeYZ1 = centerY+appHeight*7/20;
+  strokeWidthZ1 = colorRectWidth/6;
+  strokeHeightZ1 = colorRectHeight;
+  //
+  strokeXZ2 = (centerX-appWidth*39/80)+colorRectHeight*5+colorRectWidth*2/6;
+  strokeYZ2 = centerY+appHeight*7/20;
+  strokeWidthZ2 = colorRectWidth/6;
+  strokeHeightZ2 = colorRectHeight;
 
 
   pic = loadImage("../images/free-exit-logout-icon-2857-thumb.png"); //Dimentions: width: 512 height: 512
@@ -233,13 +270,159 @@ void setup()
   imgHeight2 = eraserHeight;
   picWidthAdjusted2 = imgWidth2 * imageWidthRatio2;
   picHeightAdjusted2 = imgHeight2 * imageHeightRatio2;
+
+
+
   //
+  pic3 = loadImage("../images/1663167-200.png"); //Dimentions: width: 200 height: 200
+
+  int picWidth3 = 200;
+  int picHeight3 = 200;
+  if ( picWidth3 >= picHeight3 ) {
+    imageLargerDimension3 = picWidth3;
+    imageSmallerDimension3 = picHeight3;
+    widthLarger3 = true;
+  } else {
+    //False if Portrait
+    imageLargerDimension3 = picHeight3;
+    imageSmallerDimension3 = picWidth3;
+    heightLarger = true;
+  }
+  println(imgX3, imgY3, picWidthAdjusted3, picHeightAdjusted3);
+
+  if ( widthLarger3 == true ) imageWidthRatio3 = imageLargerDimension3/imageLargerDimension3;
+  if ( widthLarger3 == true ) imageHeightRatio3 = imageSmallerDimension3/imageLargerDimension3;
+  if ( heightLarger3 == true ) imageWidthRatio3 = imageSmallerDimension3/imageLargerDimension3;
+  if ( heightLarger3 == true ) imageWidthRatio3 = imageLargerDimension3/imageLargerDimension3;
+  //
+  imgX3 = centerX+appWidth*15/40;
+  imgY3 = buttonY2;
+  imgWidth3 = buttonWidth/2;
+  imgHeight3 = buttonHeight;
+  picWidthAdjusted3 = imgWidth3 * imageWidthRatio3;
+  picHeightAdjusted3 = imgHeight3 * imageHeightRatio3;
+
+  //
+  pic4 = loadImage("../images/ab7fc9be5ab8b32cd4c38a57c7219d67_MINI.png"); //Dimentions: width: 1039 height: 803
+
+  int picWidth4 = 1039;
+  int picHeight4 = 803;
+  if ( picWidth4 >= picHeight4 ) {
+    imageLargerDimension4 = picWidth4;
+    imageSmallerDimension4 = picHeight4;
+    widthLarger4 = true;
+  } else {
+    //False if Portrait
+    imageLargerDimension4 = picHeight4;
+    imageSmallerDimension4 = picWidth4;
+    heightLarger4 = true;
+  }
+  println(imgX4, imgY4, picWidthAdjusted4, picHeightAdjusted4);
+
+  if ( widthLarger4 == true ) imageWidthRatio4 = imageLargerDimension4/imageLargerDimension4;
+  if ( widthLarger4 == true ) imageHeightRatio4 = imageSmallerDimension4/imageLargerDimension4;
+  if ( heightLarger4 == true ) imageWidthRatio4 = imageSmallerDimension4/imageLargerDimension4;
+  if ( heightLarger4 == true ) imageWidthRatio4 = imageLargerDimension4/imageLargerDimension4;
+  //
+  imgX4 = (centerX-appWidth*39/80)+colorRectHeight*5;
+  imgY4 = centerY+appHeight*7/20;
+  imgWidth4 = colorRectWidth/6;
+  imgHeight4 = colorRectHeight*195/150;
+  picWidthAdjusted4 = imgWidth4 * imageWidthRatio4;
+  picHeightAdjusted4 = imgHeight4 * imageHeightRatio4;
+  //
+  pic5 = loadImage("../images/799-7996851_130-latest-pokemon-coloring-pages-for-kids-and_MINI.png"); //Dimentions: width: 295 height: 227
+
+  int picWidth5 = 295;
+  int picHeight5 = 227;
+  if ( picWidth5 >= picHeight5 ) {
+    imageLargerDimension5 = picWidth5;
+    imageSmallerDimension5 = picHeight5;
+    widthLarger5 = true;
+  } else {
+    //False if Portrait
+    imageLargerDimension5 = picHeight5;
+    imageSmallerDimension5 = picWidth5;
+    heightLarger5 = true;
+  }
+  println(imgX5, imgY5, picWidthAdjusted5, picHeightAdjusted5);
+
+  if ( widthLarger5 == true ) imageWidthRatio5 = imageLargerDimension5/imageLargerDimension5;
+  if ( widthLarger5 == true ) imageHeightRatio5 = imageSmallerDimension5/imageLargerDimension5;
+  if ( heightLarger5 == true ) imageWidthRatio5 = imageSmallerDimension5/imageLargerDimension5;
+  if ( heightLarger5 == true ) imageWidthRatio5 = imageLargerDimension5/imageLargerDimension5;
+  //
+  imgX5 = (centerX-appWidth*39/80)+colorRectHeight*5+colorRectWidth/6;
+  imgY5 = centerY+appHeight*7/20;
+  imgWidth5 = colorRectWidth/6;
+  imgHeight5 = colorRectHeight*195/150;
+  picWidthAdjusted5 = imgWidth5 * imageWidthRatio5;
+  picHeightAdjusted5 = imgHeight5 * imageHeightRatio5;
+
+  //
+  pic6 = loadImage("../images/Kijgpqg5T_MINI.png"); //Dimentions: width: 477 height: 477
+
+  int picWidth6 = 477;
+  int picHeight6 = 477;
+  if ( picWidth6 >= picHeight6 ) {
+    imageLargerDimension6 = picWidth6;
+    imageSmallerDimension6 = picHeight6;
+    widthLarger6 = true;
+  } else {
+    //False if Portrait
+    imageLargerDimension6 = picHeight6;
+    imageSmallerDimension6 = picWidth6;
+    heightLarger6 = true;
+  }
+  println(imgX6, imgY6, picWidthAdjusted6, picHeightAdjusted6);
+
+  if ( widthLarger6 == true ) imageWidthRatio6 = imageLargerDimension6/imageLargerDimension6;
+  if ( widthLarger6 == true ) imageHeightRatio6 = imageSmallerDimension6/imageLargerDimension6;
+  if ( heightLarger6 == true ) imageWidthRatio6 = imageSmallerDimension6/imageLargerDimension6;
+  if ( heightLarger6 == true ) imageWidthRatio6 = imageLargerDimension6/imageLargerDimension6;
+  //
+  imgX6 = (centerX-appWidth*39/80)+colorRectHeight*5+colorRectWidth*2/6;
+  imgY6 = centerY+appHeight*7/20;
+  imgWidth6 = colorRectWidth/6;
+  imgHeight6 = colorRectHeight;
+  picWidthAdjusted6 = imgWidth6 * imageWidthRatio6;
+  picHeightAdjusted6 = imgHeight6 * imageHeightRatio6;
+
+  //
+  //
+  backGroundX = centerX-appWidth*39/80;
+  backGroundY = centerY+appHeight*7/20;
+  backGroundWidth = appWidth*239/320;
+  backGroundHeight = appHeight*5/40;
+
+  //
+  backColorSetup();
+  fill(backgroundColor);
   rect( drawingSurfaceX, drawingSurfaceY, drawingSurfaceWidth, drawingSurfaceHeight );
+  fill(resetWhite);
+
+  /*fill(backgroundColor);
+   rect( drawingSurfaceX, drawingSurfaceY, drawingSurfaceWidth, drawingSurfaceHeight );
+   fill(resetWhite);*/
+
+
   //
 }//End setup
 //
 void draw() 
 {
+  if ( run==true ) {
+    backColorSetup();
+    fill(backgroundColor);
+    rect( drawingSurfaceX, drawingSurfaceY, drawingSurfaceWidth, drawingSurfaceHeight );
+    fill(resetWhite);
+  }
+
+
+
+
+
+
   //Hover-over
   if ( mouseX>buttonX && mouseX<buttonX+buttonWidth && mouseY>buttonY && mouseY<buttonY+buttonHeight ) {
     buttonFill = lightgreen1;
@@ -260,6 +443,19 @@ void draw()
   rect(buttonX1, buttonY1, buttonWidth1, buttonHeight1);
   fill(resetButtonColour);
   image(pic1, imgX1, imgY1, picWidthAdjusted1, picHeightAdjusted1);
+  //
+  if ( mouseX>buttonX2 && mouseX<buttonX2+buttonWidth2 && mouseY>buttonY2 && mouseY<buttonY2+buttonHeight2 ) {
+    buttonFill = lightgreen1;
+  } else {
+    buttonFill = green1;
+  }//End Hover-over
+  fill(buttonFill);
+  rect(buttonX2, buttonY2, buttonWidth2, buttonHeight2);
+  fill(resetButtonColour);
+  image(pic3, imgX3, imgY3, picWidthAdjusted3, picHeightAdjusted3);
+
+
+
   //
   //colorSelector
   //
@@ -293,7 +489,7 @@ void draw()
     //
     //Hover-over
     if ( mouseX>eraserX && mouseX<eraserX+eraserWidth && mouseY>eraserY && mouseY<eraserY+eraserHeight ) {
-      buttonFill = gray;
+      buttonFill = backgroundColor;
     } else {
       buttonFill = resetWhite;
     }//End Hover-over
@@ -305,83 +501,179 @@ void draw()
     //strokes
     //
     fill(resetWhite);
-    
+
     //Hover-over
-  if ( mouseX>strokeX && mouseX<strokeX+strokeWidth && mouseY>strokeY && mouseY<strokeY+strokeHeight ) {
-    buttonFill = gray;
-  } else {
-    buttonFill = resetWhite;
-  }//End Hover-over
-  fill(buttonFill);
-  rect(strokeX, strokeY, strokeWidth, strokeHeight);
-  fill(resetButtonColour);
-  strokeCap(SQUARE);
-  strokeWeight(1);
-  line(strokeX, (strokeY+strokeHeight/2), strokeX1, (strokeY+strokeHeight/2));
-  strokeWeight(1);
-  strokeCap(ROUND);
+    if ( mouseX>strokeX && mouseX<strokeX+strokeWidth && mouseY>strokeY && mouseY<strokeY+strokeHeight ) {
+      buttonFill = gray;
+    } else {
+      buttonFill = resetWhite;
+    }//End Hover-over
+    fill(buttonFill);
+    rect(strokeX, strokeY, strokeWidth, strokeHeight);
+    fill(resetButtonColour);
+    strokeCap(SQUARE);
+    strokeWeight(1);
+    line(strokeX, (strokeY+strokeHeight/2), strokeX1, (strokeY+strokeHeight/2));
+    strokeWeight(1);
+    strokeCap(ROUND);
+    //
+    //Hover-over
+    if ( mouseX>strokeX1 && mouseX<strokeX1+strokeWidth1 && mouseY>strokeY1 && mouseY<strokeY1+strokeHeight1 ) {
+      buttonFill = gray;
+    } else {
+      buttonFill = resetWhite;
+    }//End Hover-over
+    fill(buttonFill);
+    rect(strokeX1, strokeY1, strokeWidth1, strokeHeight1);
+    fill(resetButtonColour);
+    strokeCap(SQUARE);
+    strokeWeight(10);
+    line(strokeX1, (strokeY+strokeHeight/2), strokeX2, (strokeY+strokeHeight/2));
+    strokeWeight(1);
+    strokeCap(ROUND);
+    //
+    //Hover-over
+    if ( mouseX>strokeX2 && mouseX<strokeX2+strokeWidth2 && mouseY>strokeY2 && mouseY<strokeY2+strokeHeight2 ) {
+      buttonFill = gray;
+    } else {
+      buttonFill = resetWhite;
+    }//End Hover-over
+    fill(buttonFill);
+    rect(strokeX2, strokeY2, strokeWidth2, strokeHeight2);
+    fill(resetButtonColour);
+    strokeCap(SQUARE);
+    strokeWeight(20);
+    line(strokeX2, (strokeY+strokeHeight/2), strokeX3, (strokeY+strokeHeight/2));
+    strokeWeight(1);
+    strokeCap(ROUND);
+    //
+    //Hover-over
+    if ( mouseX>strokeX3 && mouseX<strokeX3+strokeWidth3 && mouseY>strokeY3 && mouseY<strokeY3+strokeHeight3 ) {
+      buttonFill = gray;
+    } else {
+      buttonFill = resetWhite;
+    }//End Hover-over
+    fill(buttonFill);
+    rect(strokeX3, strokeY3, strokeWidth3, strokeHeight3);
+    fill(resetButtonColour);
+    strokeCap(SQUARE);
+    strokeWeight(30);
+    line(strokeX3, (strokeY+strokeHeight/2), strokeX4, (strokeY+strokeHeight/2));
+    strokeWeight(1);
+    strokeCap(ROUND);
+    //
+    //Hover-over
+    if ( mouseX>strokeX4 && mouseX<strokeX4+strokeWidth4 && mouseY>strokeY4 && mouseY<strokeY4+strokeHeight4 ) {
+      buttonFill = gray;
+    } else {
+      buttonFill = resetWhite;
+    }//End Hover-over
+    fill(buttonFill);
+    rect(strokeX4, strokeY4, strokeWidth4, strokeHeight4);
+    fill(resetButtonColour);
+    strokeCap(SQUARE);
+    strokeWeight(50);
+    line(strokeX4, (strokeY+strokeHeight/2), strokeX4+strokeWidth4, (strokeY+strokeHeight/2));
+    strokeWeight(1);
+    strokeCap(ROUND);
+  }
   //
-  //Hover-over
-  if ( mouseX>strokeX1 && mouseX<strokeX1+strokeWidth1 && mouseY>strokeY1 && mouseY<strokeY1+strokeHeight1 ) {
-    buttonFill = gray;
-  } else {
-    buttonFill = resetWhite;
-  }//End Hover-over
-  fill(buttonFill);
-  rect(strokeX1, strokeY1, strokeWidth1, strokeHeight1);
-  fill(resetButtonColour);
-  strokeCap(SQUARE);
-  strokeWeight(10);
-  line(strokeX1, (strokeY+strokeHeight/2), strokeX2, (strokeY+strokeHeight/2));
-  strokeWeight(1);
-  strokeCap(ROUND);
-  //
-  //Hover-over
-  if ( mouseX>strokeX2 && mouseX<strokeX2+strokeWidth2 && mouseY>strokeY2 && mouseY<strokeY2+strokeHeight2 ) {
-    buttonFill = gray;
-  } else {
-    buttonFill = resetWhite;
-  }//End Hover-over
-  fill(buttonFill);
-  rect(strokeX2, strokeY2, strokeWidth2, strokeHeight2);
-  fill(resetButtonColour);
-  strokeCap(SQUARE);
-  strokeWeight(20);
-  line(strokeX2, (strokeY+strokeHeight/2), strokeX3, (strokeY+strokeHeight/2));
-  strokeWeight(1);
-  strokeCap(ROUND);
-  //
-  //Hover-over
-  if ( mouseX>strokeX3 && mouseX<strokeX3+strokeWidth3 && mouseY>strokeY3 && mouseY<strokeY3+strokeHeight3 ) {
-    buttonFill = gray;
-  } else {
-    buttonFill = resetWhite;
-  }//End Hover-over
-  fill(buttonFill);
-  rect(strokeX3, strokeY3, strokeWidth3, strokeHeight3);
-  fill(resetButtonColour);
-  strokeCap(SQUARE);
-  strokeWeight(30);
-  line(strokeX3, (strokeY+strokeHeight/2), strokeX4, (strokeY+strokeHeight/2));
-  strokeWeight(1);
-  strokeCap(ROUND);
-  //
-  //Hover-over
-  if ( mouseX>strokeX4 && mouseX<strokeX4+strokeWidth4 && mouseY>strokeY4 && mouseY<strokeY4+strokeHeight4 ) {
-    buttonFill = gray;
-  } else {
-    buttonFill = resetWhite;
-  }//End Hover-over
-  fill(buttonFill);
-  rect(strokeX4, strokeY4, strokeWidth4, strokeHeight4);
-  fill(resetButtonColour);
-  strokeCap(SQUARE);
-  strokeWeight(50);
-  line(strokeX4, (strokeY+strokeHeight/2), strokeX4+strokeWidth4, (strokeY+strokeHeight/2));
-  strokeWeight(1);
-  strokeCap(ROUND);
+  if ( colorSelect1==true ) {
+    fill(resetWhite);
+    rect(colorRectX, colorRectY, colorRectWidth, colorRectHeight);
+    fill(yellow);
+    rect(colorX, colorY, colorWidth, colorHeight);
+    fill(resetWhite);
+    fill(pink);
+    rect(colorX1, colorY1, colorWidth1, colorHeight1);
+    fill(resetWhite);
+    fill(green);
+    rect(colorX2, colorY2, colorWidth2, colorHeight2);
+    fill(resetWhite);
+    fill(orange);
+    rect(colorX3, colorY3, colorWidth3, colorHeight3);
+    fill(resetWhite);
+    fill(blue);
+    rect(colorX4, colorY4, colorWidth4, colorHeight4);
+    fill(resetWhite);
+    fill(purple);
+    rect(colorX5, colorY5, colorWidth5, colorHeight5);
+    fill(resetWhite);
+    fill(red);
+    rect(colorX6, colorY6, colorWidth6, colorHeight6);
+    fill(resetWhite);
+    fill(black);
+    rect(colorX7, colorY7, colorWidth7, colorHeight7);
+    fill(resetWhite);
+    rect(eraserX, eraserY, eraserWidth, eraserHeight);
+    //
+    if ( mouseX>strokeXZ && mouseX<strokeXZ+strokeWidthZ && mouseY>strokeYZ && mouseY<strokeYZ+strokeHeightZ ) {
+      buttonFill = gray;
+    } else {
+      buttonFill = resetWhite;
+    }//End Hover-over
+    fill(buttonFill);
+    rect(strokeXZ, strokeYZ, strokeWidthZ, strokeHeightZ);
+    fill(resetButtonColour);
+    image(pic4, imgX4, imgY4, picWidthAdjusted4, picHeightAdjusted4);
+    //
+    if ( mouseX>strokeXZ1 && mouseX<strokeXZ1+strokeWidthZ1 && mouseY>strokeYZ1 && mouseY<strokeYZ1+strokeHeightZ1 ) {
+      buttonFill = gray;
+    } else {
+      buttonFill = resetWhite;
+    }//End Hover-over
+    fill(buttonFill);
+    rect(strokeXZ1, strokeYZ1, strokeWidthZ1, strokeHeightZ1);
+    fill(resetButtonColour);
+    image(pic5, imgX5, imgY5, picWidthAdjusted5, picHeightAdjusted5);
+    //
+    if ( mouseX>strokeXZ2 && mouseX<strokeXZ2+strokeWidthZ2 && mouseY>strokeYZ2 && mouseY<strokeYZ2+strokeHeightZ2 ) {
+      buttonFill = gray;
+    } else {
+      buttonFill = resetWhite;
+    }//End Hover-over
+    fill(buttonFill);
+    rect(strokeXZ2, strokeYZ2, strokeWidthZ2, strokeHeightZ2);
+    fill(resetButtonColour);
+    image(pic6, imgX6, imgY6, picWidthAdjusted6, picHeightAdjusted6);
+    //
   }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  //
+
+  if ( backGround==true ) {
+    fill(#CCCCCC);
+    stroke(#CCCCCC);
+    rect(backGroundX, backGroundY, backGroundWidth, backGroundHeight);
+    fill(resetWhite);
+    stroke(black);
+  }
   //
   if (mousePressed==true && mouseX> drawingSurfaceX && mouseX< drawingSurfaceX+drawingSurfaceWidth && mouseY>drawingSurfaceY && mouseY<drawingSurfaceY+drawingSurfaceHeight ) {
     colorSetup(); 
@@ -511,49 +803,168 @@ void mousePressed()
     eraseC=true;
   }
   //
+  if ( mousePressed==true && mouseX>colorX && mouseX<colorX+colorWidth && mouseY>colorY && mouseY<colorY+colorHeight && colorSelect1==true ) {
+    run=true;
+    yellowC1=true;
+    pinkC1=false;
+    greenC1=false;
+    orangeC1=false;
+    blueC1=false;
+    purpleC1=false;
+    redC1=false;
+    blackC1=false;
+    whiteC1=false;
+  } else { 
+    run=false;
+  }
+  //
+  if ( mouseX>colorX1 && mouseX<colorX1+colorWidth1 && mouseY>colorY1 && mouseY<colorY1+colorHeight1 && colorSelect1==true ) {
+    run=true;
+    yellowC1=false;
+    pinkC1=true;
+    greenC1=false;
+    orangeC1=false;
+    blueC1=false;
+    purpleC1=false;
+    redC1=false;
+    blackC1=false;
+    whiteC1=false;
+  }
+  //
+  if ( mouseX>colorX2 && mouseX<colorX2+colorWidth2 && mouseY>colorY2 && mouseY<colorY2+colorHeight2 && colorSelect1==true ) {
+    run=true;
+    yellowC1=false;
+    pinkC1=false;
+    greenC1=true;
+    orangeC1=false;
+    blueC1=false;
+    purpleC1=false;
+    redC1=false;
+    blackC1=false;
+    whiteC1=false;
+  }
+  //
+  if ( mouseX>colorX3 && mouseX<colorX3+colorWidth3 && mouseY>colorY3 && mouseY<colorY3+colorHeight3 && colorSelect1==true ) {
+    run=true;
+    yellowC1=false;
+    pinkC1=false;
+    greenC1=false;
+    orangeC1=true;
+    blueC1=false;
+    purpleC1=false;
+    redC1=false;
+    blackC1=false;
+    whiteC1=false;
+  }
+  //
+  if ( mouseX>colorX4 && mouseX<colorX4+colorWidth4 && mouseY>colorY4 && mouseY<colorY4+colorHeight4 && colorSelect1==true ) {
+    run=true;
+    yellowC1=false;
+    pinkC1=false;
+    greenC1=false;
+    orangeC1=false;
+    blueC1=true;
+    purpleC1=false;
+    redC1=false;
+    blackC1=false;
+    whiteC1=false;
+  }
+  //
+  if ( mouseX>colorX5 && mouseX<colorX5+colorWidth5 && mouseY>colorY5 && mouseY<colorY5+colorHeight5 && colorSelect1==true ) {
+    run=true;
+    yellowC1=false;
+    pinkC1=false;
+    greenC1=false;
+    orangeC1=false;
+    blueC1=false;
+    purpleC1=true;
+    redC1=false;
+    blackC1=false;
+    whiteC1=false;
+  }
+  //
+  if ( mouseX>colorX6 && mouseX<colorX6+colorWidth6 && mouseY>colorY6 && mouseY<colorY6+colorHeight6 && colorSelect1==true ) {
+    run=true;
+    yellowC1=false;
+    pinkC1=false;
+    greenC1=false;
+    orangeC1=false;
+    blueC1=false;
+    purpleC1=false;
+    redC1=true;
+    blackC1=false;
+    whiteC1=false;
+  }
+  //
+  if ( mouseX>colorX7 && mouseX<colorX7+colorWidth7 && mouseY>colorY7 && mouseY<colorY7+colorHeight7 && colorSelect1==true ) {
+    run=true;
+    yellowC1=false;
+    pinkC1=false;
+    greenC1=false;
+    orangeC1=false;
+    blueC1=false;
+    purpleC1=false;
+    redC1=false;
+    blackC1=true;
+    whiteC1=false;
+  }
+  //
+  if ( mouseX>eraserX && mouseX<eraserX+eraserWidth && mouseY>eraserY && mouseY<eraserY+eraserHeight && colorSelect1==true ) {
+    run=true;
+    yellowC1=false;
+    pinkC1=false;
+    greenC1=false;
+    orangeC1=false;
+    blueC1=false;
+    purpleC1=false;
+    redC1=false;
+    blackC1=false;
+    whiteC1=true;
+  }
+  //
   //Stroke select
   //
-  
+
 
 
   if ( mouseX>strokeX && mouseX<strokeX+strokeWidth && mouseY>strokeY && mouseY<strokeY+strokeHeight && colorSelect==true ) {
-  stroke=true;
-  stroke1=false;
-  stroke2=false;
-  stroke3=false;
-  stroke4=false;
+    stroke=true;
+    stroke1=false;
+    stroke2=false;
+    stroke3=false;
+    stroke4=false;
   }
   //
   if ( mouseX>strokeX1 && mouseX<strokeX1+strokeWidth1 && mouseY>strokeY1 && mouseY<strokeY1+strokeHeight1 && colorSelect==true ) {
-  stroke=false;
-  stroke1=true;
-  stroke2=false;
-  stroke3=false;
-  stroke4=false;
+    stroke=false;
+    stroke1=true;
+    stroke2=false;
+    stroke3=false;
+    stroke4=false;
   }
   //
   if ( mouseX>strokeX2 && mouseX<strokeX2+strokeWidth2 && mouseY>strokeY2 && mouseY<strokeY2+strokeHeight2 && colorSelect==true ) {
-  stroke=false;
-  stroke1=false;
-  stroke2=true;
-  stroke3=false;
-  stroke4=false;
+    stroke=false;
+    stroke1=false;
+    stroke2=true;
+    stroke3=false;
+    stroke4=false;
   }
   //
   if ( mouseX>strokeX3 && mouseX<strokeX3+strokeWidth3 && mouseY>strokeY3 && mouseY<strokeY3+strokeHeight3 && colorSelect==true ) {
-  stroke=false;
-  stroke1=false;
-  stroke2=false;
-  stroke3=true;
-  stroke4=false;
+    stroke=false;
+    stroke1=false;
+    stroke2=false;
+    stroke3=true;
+    stroke4=false;
   }
   //
   if ( mouseX>strokeX4 && mouseX<strokeX4+strokeWidth4 && mouseY>strokeY4 && mouseY<strokeY4+strokeHeight4 && colorSelect==true ) {
-  stroke=false;
-  stroke1=false;
-  stroke2=false;
-  stroke3=false;
-  stroke4=true;
+    stroke=false;
+    stroke1=false;
+    stroke2=false;
+    stroke3=false;
+    stroke4=true;
   }
   //
 
@@ -569,10 +980,31 @@ void mousePressed()
   if ( mouseX>buttonX1 && mouseX<buttonX1+buttonWidth1 && mouseY>buttonY1 && mouseY<buttonY1+buttonHeight1 ) {
     if ( colorSelect==false ) { 
       colorSelect=true;
+      colorSelect1=false;
+      backGround=false;
     } else {
+      backGround=true;
+      colorSelect=false;
+      colorSelect1=false;
+    }
+  }
+
+  if ( mouseX>buttonX2 && mouseX<buttonX2+buttonWidth2 && mouseY>buttonY2 && mouseY<buttonY2+buttonHeight2 ) {
+    if ( colorSelect1==false ) { 
+      colorSelect1=true;
+      colorSelect=false;
+      backGround=false;
+    } else {
+      backGround=true;
+      colorSelect1=false;
       colorSelect=false;
     }
   }
+
+
+
+
+
   //
 
   //
