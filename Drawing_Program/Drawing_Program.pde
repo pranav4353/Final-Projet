@@ -7,7 +7,7 @@ import ddf.minim.ugens.*;
 
 
 //Global Variables
-PImage pic, pic1, pic2, pic3, pic4, pic5, pic6;
+PImage pic, pic1, pic2, pic3, pic4, pic5, pic6, pic4Demo, pic5Demo, pic6Demo;
 float appHeight, appWidth;
 float imgX, imgY, imgWidth, imgHeight, imageLargerDimension, imageSmallerDimension, imageWidthRatio=0.0, imageHeightRatio=0.0;
 float imgX1, imgY1, imgWidth1, imgHeight1, imageLargerDimension1, imageSmallerDimension1, imageWidthRatio1=0.0, imageHeightRatio1=0.0;
@@ -16,6 +16,9 @@ float imgX3, imgY3, imgWidth3, imgHeight3, imageLargerDimension3, imageSmallerDi
 float imgX4, imgY4, imgWidth4, imgHeight4, imageLargerDimension4, imageSmallerDimension4, imageWidthRatio4=0.0, imageHeightRatio4=0.0;
 float imgX5, imgY5, imgWidth5, imgHeight5, imageLargerDimension5, imageSmallerDimension5, imageWidthRatio5=0.0, imageHeightRatio5=0.0;
 float imgX6, imgY6, imgWidth6, imgHeight6, imageLargerDimension6, imageSmallerDimension6, imageWidthRatio6=0.0, imageHeightRatio6=0.0;
+float imgX4Demo, imgY4Demo, imgWidth4Demo, imgHeight4Demo, imageLargerDimension4Demo, imageSmallerDimension4Demo, imageWidthRatio4Demo=0.0, imageHeightRatio4Demo=0.0;
+float imgX5Demo, imgY5Demo, imgWidth5Demo, imgHeight5Demo, imageLargerDimension5Demo, imageSmallerDimension5Demo, imageWidthRatio5Demo=0.0, imageHeightRatio5Demo=0.0;
+float imgX6Demo, imgY6Demo, imgWidth6Demo, imgHeight6Demo, imageLargerDimension6Demo, imageSmallerDimension6Demo, imageWidthRatio6Demo=0.0, imageHeightRatio6Demo=0.0;
 float drawingSurfaceX, drawingSurfaceY, drawingSurfaceWidth, drawingSurfaceHeight, drawingDiameter;
 float buttonX, buttonY, buttonWidth, buttonHeight;
 float buttonX1, buttonY1, buttonWidth1, buttonHeight1;
@@ -39,13 +42,13 @@ float strokeX4, strokeY4, strokeWidth4, strokeHeight4;
 float strokeXZ, strokeYZ, strokeWidthZ, strokeHeightZ;
 float strokeXZ1, strokeYZ1, strokeWidthZ1, strokeHeightZ1;
 float strokeXZ2, strokeYZ2, strokeWidthZ2, strokeHeightZ2;
-float picWidthAdjusted, picHeightAdjusted, picWidthAdjusted1, picHeightAdjusted1, picWidthAdjusted2, picHeightAdjusted2, picWidthAdjusted3, picHeightAdjusted3, picWidthAdjusted4, picHeightAdjusted4, picWidthAdjusted5, picHeightAdjusted5, picWidthAdjusted6, picHeightAdjusted6;
+float picWidthAdjusted, picHeightAdjusted, picWidthAdjusted1, picHeightAdjusted1, picWidthAdjusted2, picHeightAdjusted2, picWidthAdjusted3, picHeightAdjusted3, picWidthAdjusted4, picHeightAdjusted4, picWidthAdjusted5, picHeightAdjusted5, picWidthAdjusted6, picHeightAdjusted6, picWidthAdjusted4Demo, picHeightAdjusted4Demo, picWidthAdjusted5Demo, picHeightAdjusted5Demo, picWidthAdjusted6Demo, picHeightAdjusted6Demo;
 float backGroundX, backGroundY, backGroundWidth, backGroundHeight; 
-Boolean widthLarger = false, heightLarger = false, widthLarger1 = false, heightLarger1 = false, widthLarger2 = false, heightLarger2 = false, widthLarger3 = false, heightLarger3 = false, widthLarger4 = false, heightLarger4 = false, widthLarger5 = false, heightLarger5 = false, widthLarger6 = false, heightLarger6 = false;
+Boolean widthLarger = false, heightLarger = false, widthLarger1 = false, heightLarger1 = false, widthLarger2 = false, heightLarger2 = false, widthLarger3 = false, heightLarger3 = false, widthLarger4 = false, heightLarger4 = false, widthLarger5 = false, heightLarger5 = false, widthLarger6 = false, heightLarger6 = false, widthLarger4Demo = false, heightLarger4Demo = false, widthLarger5Demo = false, heightLarger5Demo = false, widthLarger6Demo = false, heightLarger6Demo = false;
 Boolean draw=false, colorSelect=false, backGround=false, colorSelect1=false;
 Boolean yellowC=false, pinkC=false, greenC=false, orangeC=false, blueC=false, purpleC=false, redC=false, blackC=true, eraseC=false;
 Boolean yellowC1=false, pinkC1=false, greenC1=false, orangeC1=false, blueC1=false, purpleC1=false, redC1=false, blackC1=false, whiteC1=true;
-Boolean stroke=true, stroke1=false, stroke2=false, stroke3=false, stroke4=false, run=false;
+Boolean stroke=true, stroke1=false, stroke2=false, stroke3=false, stroke4=false, run=false, piC4=false, piC5=false, piC6=false;
 color lightgreen1=#48A4BC, green1=#117659, resetButtonColour, buttonFill, resetWhite=#fcfcfc, gray=#5A5A5A, resetBackground=#fcfcfc, backgroundColor;
 color yellow=#F5E639, pink=#ED5DE6, green=#4CDE65, orange=#F5B128, blue=#2545F5, purple=#A11EE8, red=#E8251E, black=#000000;
 //
@@ -303,10 +306,10 @@ void setup()
   picHeightAdjusted3 = imgHeight3 * imageHeightRatio3;
 
   //
-  pic4 = loadImage("../images/ab7fc9be5ab8b32cd4c38a57c7219d67_MINI.png"); //Dimentions: width: 1039 height: 803
+  pic4 = loadImage("../images/ab7fc9be5ab8b32cd4c38a57c7219d67.png"); //Dimentions: width: 3300 height: 2550
 
-  int picWidth4 = 1039;
-  int picHeight4 = 803;
+  int picWidth4 = 3300;
+  int picHeight4 = 2550;
   if ( picWidth4 >= picHeight4 ) {
     imageLargerDimension4 = picWidth4;
     imageSmallerDimension4 = picHeight4;
@@ -331,10 +334,10 @@ void setup()
   picWidthAdjusted4 = imgWidth4 * imageWidthRatio4;
   picHeightAdjusted4 = imgHeight4 * imageHeightRatio4;
   //
-  pic5 = loadImage("../images/799-7996851_130-latest-pokemon-coloring-pages-for-kids-and_MINI.png"); //Dimentions: width: 295 height: 227
+  pic5 = loadImage("../images/799-7996851_130-latest-pokemon-coloring-pages-for-kids-and.png"); //Dimentions: width: 947 height: 730
 
-  int picWidth5 = 295;
-  int picHeight5 = 227;
+  int picWidth5 = 947;
+  int picHeight5 = 730;
   if ( picWidth5 >= picHeight5 ) {
     imageLargerDimension5 = picWidth5;
     imageSmallerDimension5 = picHeight5;
@@ -360,10 +363,10 @@ void setup()
   picHeightAdjusted5 = imgHeight5 * imageHeightRatio5;
 
   //
-  pic6 = loadImage("../images/Kijgpqg5T_MINI.png"); //Dimentions: width: 477 height: 477
+  pic6 = loadImage("../images/Kijgpqg5T.png"); //Dimentions: width: 1000 height: 1000
 
-  int picWidth6 = 477;
-  int picHeight6 = 477;
+  int picWidth6 = 1000;
+  int picHeight6 = 1000;
   if ( picWidth6 >= picHeight6 ) {
     imageLargerDimension6 = picWidth6;
     imageSmallerDimension6 = picHeight6;
@@ -387,6 +390,111 @@ void setup()
   imgHeight6 = colorRectHeight;
   picWidthAdjusted6 = imgWidth6 * imageWidthRatio6;
   picHeightAdjusted6 = imgHeight6 * imageHeightRatio6;
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  pic4Demo = loadImage("../images/ab7fc9be5ab8b32cd4c38a57c7219d67_MINI.png"); //Dimentions: width: 1039 height: 803
+
+  int picWidth4Demo = 1039;
+  int picHeight4Demo = 803;
+  if ( picWidth4Demo >= picHeight4Demo ) {
+    imageLargerDimension4Demo = picWidth4Demo;
+    imageSmallerDimension4Demo = picHeight4Demo;
+    widthLarger4Demo = true;
+  } else {
+    //False if Portrait
+    imageLargerDimension4Demo = picHeight4Demo;
+    imageSmallerDimension4Demo = picWidth4Demo;
+    heightLarger4Demo = true;
+  }
+  println(imgX4Demo, imgY4Demo, picWidthAdjusted4Demo, picHeightAdjusted4Demo);
+
+  if ( widthLarger4Demo == true ) imageWidthRatio4Demo = imageLargerDimension4Demo/imageLargerDimension4Demo;
+  if ( widthLarger4Demo == true ) imageHeightRatio4Demo = imageSmallerDimension4Demo/imageLargerDimension4Demo;
+  if ( heightLarger4Demo == true ) imageWidthRatio4Demo = imageSmallerDimension4Demo/imageLargerDimension4Demo;
+  if ( heightLarger4Demo == true ) imageWidthRatio4Demo = imageLargerDimension4Demo/imageLargerDimension4Demo;
+  //
+  imgX4Demo = (centerX-appWidth*39/80)+colorRectHeight*5;
+  imgY4Demo = centerY+appHeight*7/20;
+  imgWidth4Demo = colorRectWidth/6;
+  imgHeight4Demo = colorRectHeight*195/150;
+  picWidthAdjusted4Demo = imgWidth4Demo * imageWidthRatio4Demo;
+  picHeightAdjusted4Demo = imgHeight4Demo * imageHeightRatio4Demo;
+  //
+  pic5Demo = loadImage("../images/799-7996851_130-latest-pokemon-coloring-pages-for-kids-and_MINI.png"); //Dimentions: width: 295 height: 227
+
+  int picWidth5Demo = 295;
+  int picHeight5Demo = 227;
+  if ( picWidth5Demo >= picHeight5Demo ) {
+    imageLargerDimension5Demo = picWidth5Demo;
+    imageSmallerDimension5Demo = picHeight5Demo;
+    widthLarger5Demo = true;
+  } else {
+    //False if Portrait
+    imageLargerDimension5Demo = picHeight5Demo;
+    imageSmallerDimension5Demo = picWidth5Demo;
+    heightLarger5Demo = true;
+  }
+  println(imgX5Demo, imgY5Demo, picWidthAdjusted5Demo, picHeightAdjusted5Demo);
+
+  if ( widthLarger5Demo == true ) imageWidthRatio5Demo = imageLargerDimension5Demo/imageLargerDimension5Demo;
+  if ( widthLarger5Demo == true ) imageHeightRatio5Demo = imageSmallerDimension5Demo/imageLargerDimension5Demo;
+  if ( heightLarger5Demo == true ) imageWidthRatio5Demo = imageSmallerDimension5Demo/imageLargerDimension5Demo;
+  if ( heightLarger5Demo == true ) imageWidthRatio5Demo = imageLargerDimension5Demo/imageLargerDimension5Demo;
+  //
+  imgX5Demo = (centerX-appWidth*39/80)+colorRectHeight*5+colorRectWidth/6;
+  imgY5Demo = centerY+appHeight*7/20;
+  imgWidth5Demo = colorRectWidth/6;
+  imgHeight5Demo = colorRectHeight*195/150;
+  picWidthAdjusted5Demo = imgWidth5Demo * imageWidthRatio5Demo;
+  picHeightAdjusted5Demo = imgHeight5Demo * imageHeightRatio5Demo;
+
+  //
+  pic6Demo = loadImage("../images/Kijgpqg5T_MINI.png"); //Dimentions: width: 477 height: 477
+
+  int picWidth6Demo = 477;
+  int picHeight6Demo = 477;
+  if ( picWidth6Demo >= picHeight6Demo ) {
+    imageLargerDimension6Demo = picWidth6Demo;
+    imageSmallerDimension6Demo = picHeight6Demo;
+    widthLarger6Demo = true;
+  } else {
+    //False if Portrait
+    imageLargerDimension6Demo = picHeight6Demo;
+    imageSmallerDimension6Demo = picWidth6Demo;
+    heightLarger6Demo = true;
+  }
+  println(imgX6Demo, imgY6Demo, picWidthAdjusted6Demo, picHeightAdjusted6Demo);
+
+  if ( widthLarger6Demo == true ) imageWidthRatio6Demo = imageLargerDimension6Demo/imageLargerDimension6Demo;
+  if ( widthLarger6Demo == true ) imageHeightRatio6Demo = imageSmallerDimension6Demo/imageLargerDimension6Demo;
+  if ( heightLarger6Demo == true ) imageWidthRatio6Demo = imageSmallerDimension6Demo/imageLargerDimension6Demo;
+  if ( heightLarger6Demo == true ) imageWidthRatio6Demo = imageLargerDimension6Demo/imageLargerDimension6Demo;
+  //
+  imgX6Demo = (centerX-appWidth*39/80)+colorRectHeight*5+colorRectWidth*2/6;
+  imgY6Demo = centerY+appHeight*7/20;
+  imgWidth6Demo = colorRectWidth/6;
+  imgHeight6Demo = colorRectHeight;
+  picWidthAdjusted6Demo = imgWidth6Demo * imageWidthRatio6Demo;
+  picHeightAdjusted6Demo = imgHeight6Demo * imageHeightRatio6Demo;
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
   //
   //
@@ -417,6 +525,7 @@ void draw()
     rect( drawingSurfaceX, drawingSurfaceY, drawingSurfaceWidth, drawingSurfaceHeight );
     fill(resetWhite);
   }
+  backColorPattern();
 
 
 
@@ -615,7 +724,7 @@ void draw()
     fill(buttonFill);
     rect(strokeXZ, strokeYZ, strokeWidthZ, strokeHeightZ);
     fill(resetButtonColour);
-    image(pic4, imgX4, imgY4, picWidthAdjusted4, picHeightAdjusted4);
+    image(pic4Demo, imgX4Demo, imgY4Demo, picWidthAdjusted4Demo, picHeightAdjusted4Demo);
     //
     if ( mouseX>strokeXZ1 && mouseX<strokeXZ1+strokeWidthZ1 && mouseY>strokeYZ1 && mouseY<strokeYZ1+strokeHeightZ1 ) {
       buttonFill = gray;
@@ -625,7 +734,7 @@ void draw()
     fill(buttonFill);
     rect(strokeXZ1, strokeYZ1, strokeWidthZ1, strokeHeightZ1);
     fill(resetButtonColour);
-    image(pic5, imgX5, imgY5, picWidthAdjusted5, picHeightAdjusted5);
+    image(pic5Demo, imgX5Demo, imgY5Demo, picWidthAdjusted5Demo, picHeightAdjusted5Demo);
     //
     if ( mouseX>strokeXZ2 && mouseX<strokeXZ2+strokeWidthZ2 && mouseY>strokeYZ2 && mouseY<strokeYZ2+strokeHeightZ2 ) {
       buttonFill = gray;
@@ -635,7 +744,7 @@ void draw()
     fill(buttonFill);
     rect(strokeXZ2, strokeYZ2, strokeWidthZ2, strokeHeightZ2);
     fill(resetButtonColour);
-    image(pic6, imgX6, imgY6, picWidthAdjusted6, picHeightAdjusted6);
+    image(pic6Demo, imgX6Demo, imgY6Demo, picWidthAdjusted6Demo, picHeightAdjusted6Demo);
     //
   }
 
@@ -1000,10 +1109,59 @@ void mousePressed()
       colorSelect=false;
     }
   }
-
-
-
-
+  if ( mouseX>imgX4 && mouseX<imgX4+picWidthAdjusted4 && mouseY>imgY4 && mouseY<imgY4+picHeightAdjusted4 && colorSelect1==true ) {
+    if ( piC4==false ) {
+      fill(backgroundColor);
+      rect( drawingSurfaceX, drawingSurfaceY, drawingSurfaceWidth, drawingSurfaceHeight );
+      fill(resetWhite);
+      piC4=true;
+      piC5=false;
+      piC6=false;
+    } else {
+      piC4=false;
+      piC5=false;
+      piC6=false;
+      fill(backgroundColor);
+      rect( drawingSurfaceX, drawingSurfaceY, drawingSurfaceWidth, drawingSurfaceHeight );
+      fill(resetWhite);
+    }
+  }
+  //
+  if ( mouseX>imgX5 && mouseX<imgX5+picWidthAdjusted5 && mouseY>imgY5 && mouseY<imgY5+picHeightAdjusted5 && colorSelect1==true ) {
+    if ( piC5==false ) {
+      fill(backgroundColor);
+      rect( drawingSurfaceX, drawingSurfaceY, drawingSurfaceWidth, drawingSurfaceHeight );
+      fill(resetWhite);
+      piC4=false;
+      piC5=true;
+      piC6=false;
+    } else {
+      piC4=false;
+      piC5=false;
+      piC6=false;
+      fill(backgroundColor);
+      rect( drawingSurfaceX, drawingSurfaceY, drawingSurfaceWidth, drawingSurfaceHeight );
+      fill(resetWhite);
+    }
+  }
+  //
+  if ( mouseX>imgX6 && mouseX<imgX6+picWidthAdjusted6 && mouseY>imgY6 && mouseY<imgY6+picHeightAdjusted6 && colorSelect1==true ) {
+    if ( piC6==false ) {
+      fill(backgroundColor);
+      rect( drawingSurfaceX, drawingSurfaceY, drawingSurfaceWidth, drawingSurfaceHeight );
+      fill(resetWhite);
+      piC4=false;
+      piC5=false;
+      piC6=true;
+    } else {
+      piC4=false;
+      piC5=false;
+      piC6=false;
+      fill(backgroundColor);
+      rect( drawingSurfaceX, drawingSurfaceY, drawingSurfaceWidth, drawingSurfaceHeight );
+      fill(resetWhite);
+    }
+  }
 
   //
 
