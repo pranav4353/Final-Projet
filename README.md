@@ -5,9 +5,9 @@ To Do List
 - [ ] circle stamping tool
 - [x] size selector for tools
 - [x] colour selector for tools
-- [ ] clear/reset button
-- [ ] tool to put image into the background
-- [ ] colour seloctor for background (mabye also have a random button)
+- [x] clear/reset button
+- [x] tool to put image into the background
+- [x] colour selector for background <del>(mabye also have a random button)</del>
 - [x] exit button
 - [x] eraser (i.e. circle stamping tool, fill with background colour), removed stroke()
 - [ ] <del>put text in</del> (who needs text)
