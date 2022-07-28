@@ -8,7 +8,7 @@ import ddf.minim.ugens.*;
 
 //Global Variables
 Minim minim; 
-AudioPlayer song1; 
+AudioPlayer song1, song2; 
 AudioMetaData songMetaData1;
 PImage pic, pic1, pic2, pic3, pic4, pic5, pic6, pic4Demo, pic5Demo, pic6Demo, pic7, pic8, pic9, pic10, pic11, pic12, pic13, pic14;
 float appHeight, appWidth;
@@ -71,6 +71,10 @@ void setup()
   //
   minim = new Minim(this); 
   song1 = minim.loadFile("Ghost_Walk.mp3");
+  songMetaData1 = song1.getMetaData();
+  //
+  minim = new Minim(this);
+  song2 = minim.loadFile("Music Program_FreeWare Music_SoundEffect_Car_Door_Closing.mp3"); 
   songMetaData1 = song1.getMetaData();
   //
   musicPic();
@@ -902,6 +906,7 @@ void mousePressed()
   //color select
   //
   if ( mouseX>colorX && mouseX<colorX+colorWidth && mouseY>colorY && mouseY<colorY+colorHeight && colorSelect==true ) {
+    song2.loop(0);
     yellowC=true;
     pinkC=false;
     greenC=false;
@@ -914,6 +919,7 @@ void mousePressed()
   }
   //
   if ( mouseX>colorX1 && mouseX<colorX1+colorWidth1 && mouseY>colorY1 && mouseY<colorY1+colorHeight1 && colorSelect==true ) {
+    song2.loop(0);
     yellowC=false;
     pinkC=true;
     greenC=false;
@@ -926,6 +932,7 @@ void mousePressed()
   }
   //
   if ( mouseX>colorX2 && mouseX<colorX2+colorWidth2 && mouseY>colorY2 && mouseY<colorY2+colorHeight2 && colorSelect==true ) {
+    song2.loop(0);
     yellowC=true;
     pinkC=false;
     greenC=true;
@@ -938,6 +945,7 @@ void mousePressed()
   }
   //
   if ( mouseX>colorX3 && mouseX<colorX3+colorWidth3 && mouseY>colorY3 && mouseY<colorY3+colorHeight3 && colorSelect==true ) {
+    song2.loop(0);
     yellowC=true;
     pinkC=false;
     greenC=false;
@@ -950,6 +958,7 @@ void mousePressed()
   }
   //
   if ( mouseX>colorX4 && mouseX<colorX4+colorWidth4 && mouseY>colorY4 && mouseY<colorY4+colorHeight4 && colorSelect==true ) {
+    song2.loop(0);
     yellowC=true;
     pinkC=false;
     greenC=false;
@@ -962,6 +971,7 @@ void mousePressed()
   }
   //
   if ( mouseX>colorX5 && mouseX<colorX5+colorWidth5 && mouseY>colorY5 && mouseY<colorY5+colorHeight5 && colorSelect==true ) {
+    song2.loop(0);
     yellowC=true;
     pinkC=false;
     greenC=false;
@@ -974,6 +984,7 @@ void mousePressed()
   }
   //
   if ( mouseX>colorX6 && mouseX<colorX6+colorWidth6 && mouseY>colorY6 && mouseY<colorY6+colorHeight6 && colorSelect==true ) {
+    song2.loop(0);
     yellowC=true;
     pinkC=false;
     greenC=false;
@@ -986,6 +997,7 @@ void mousePressed()
   }
   //
   if ( mouseX>colorX7 && mouseX<colorX7+colorWidth7 && mouseY>colorY7 && mouseY<colorY7+colorHeight7 && colorSelect==true ) {
+    song2.loop(0);
     yellowC=true;
     pinkC=false;
     greenC=false;
@@ -998,6 +1010,7 @@ void mousePressed()
   }
   //
   if ( mouseX>eraserX && mouseX<eraserX+eraserWidth && mouseY>eraserY && mouseY<eraserY+eraserHeight && colorSelect==true ) {
+    song2.loop(0);
     yellowC=true;
     pinkC=false;
     greenC=false;
@@ -1010,6 +1023,7 @@ void mousePressed()
   }
   //
   if ( mousePressed==true && mouseX>colorX && mouseX<colorX+colorWidth && mouseY>colorY && mouseY<colorY+colorHeight && colorSelect1==true ) {
+    song2.loop(0);
     run=true;
     yellowC1=true;
     pinkC1=false;
@@ -1025,6 +1039,7 @@ void mousePressed()
   }
   //
   if ( mouseX>colorX1 && mouseX<colorX1+colorWidth1 && mouseY>colorY1 && mouseY<colorY1+colorHeight1 && colorSelect1==true ) {
+    song2.loop(0);
     run=true;
     yellowC1=false;
     pinkC1=true;
@@ -1038,6 +1053,7 @@ void mousePressed()
   }
   //
   if ( mouseX>colorX2 && mouseX<colorX2+colorWidth2 && mouseY>colorY2 && mouseY<colorY2+colorHeight2 && colorSelect1==true ) {
+    song2.loop(0);
     run=true;
     yellowC1=false;
     pinkC1=false;
@@ -1051,6 +1067,7 @@ void mousePressed()
   }
   //
   if ( mouseX>colorX3 && mouseX<colorX3+colorWidth3 && mouseY>colorY3 && mouseY<colorY3+colorHeight3 && colorSelect1==true ) {
+    song2.loop(0);
     run=true;
     yellowC1=false;
     pinkC1=false;
@@ -1064,6 +1081,7 @@ void mousePressed()
   }
   //
   if ( mouseX>colorX4 && mouseX<colorX4+colorWidth4 && mouseY>colorY4 && mouseY<colorY4+colorHeight4 && colorSelect1==true ) {
+    song2.loop(0);
     run=true;
     yellowC1=false;
     pinkC1=false;
@@ -1077,6 +1095,7 @@ void mousePressed()
   }
   //
   if ( mouseX>colorX5 && mouseX<colorX5+colorWidth5 && mouseY>colorY5 && mouseY<colorY5+colorHeight5 && colorSelect1==true ) {
+    song2.loop(0);
     run=true;
     yellowC1=false;
     pinkC1=false;
@@ -1090,6 +1109,7 @@ void mousePressed()
   }
   //
   if ( mouseX>colorX6 && mouseX<colorX6+colorWidth6 && mouseY>colorY6 && mouseY<colorY6+colorHeight6 && colorSelect1==true ) {
+    song2.loop(0);
     run=true;
     yellowC1=false;
     pinkC1=false;
@@ -1103,6 +1123,7 @@ void mousePressed()
   }
   //
   if ( mouseX>colorX7 && mouseX<colorX7+colorWidth7 && mouseY>colorY7 && mouseY<colorY7+colorHeight7 && colorSelect1==true ) {
+    song2.loop(0);
     run=true;
     yellowC1=false;
     pinkC1=false;
@@ -1116,6 +1137,7 @@ void mousePressed()
   }
   //
   if ( mouseX>eraserX && mouseX<eraserX+eraserWidth && mouseY>eraserY && mouseY<eraserY+eraserHeight && colorSelect1==true ) {
+    song2.loop(0);
     run=true;
     yellowC1=false;
     pinkC1=false;
@@ -1131,6 +1153,7 @@ void mousePressed()
   //Stroke select
   //
   if ( mouseX>strokeX && mouseX<strokeX+strokeWidth && mouseY>strokeY && mouseY<strokeY+strokeHeight && colorSelect==true ) {
+    song2.loop(0);
     stroke=true;
     stroke1=false;
     stroke2=false;
@@ -1141,6 +1164,7 @@ void mousePressed()
   }
   //
   if ( mouseX>strokeX1 && mouseX<strokeX1+strokeWidth1 && mouseY>strokeY1 && mouseY<strokeY1+strokeHeight1 && colorSelect==true ) {
+    song2.loop(0);
     stroke=false;
     stroke1=true;
     stroke2=false;
@@ -1151,6 +1175,7 @@ void mousePressed()
   }
   //
   if ( mouseX>strokeX2 && mouseX<strokeX2+strokeWidth2 && mouseY>strokeY2 && mouseY<strokeY2+strokeHeight2 && colorSelect==true ) {
+    song2.loop(0);
     stroke=false;
     stroke1=false;
     stroke2=true;
@@ -1161,6 +1186,7 @@ void mousePressed()
   }
   //
   if ( mouseX>strokeX3 && mouseX<strokeX3+strokeWidth3 && mouseY>strokeY3 && mouseY<strokeY3+strokeHeight3 && colorSelect==true ) {
+    song2.loop(0);
     stroke=false;
     stroke1=false;
     stroke2=false;
@@ -1171,6 +1197,7 @@ void mousePressed()
   }
   //
   if ( mouseX>strokeX4 && mouseX<strokeX4+strokeWidth4 && mouseY>strokeY4 && mouseY<strokeY4+strokeHeight4 && colorSelect==true ) {
+    song2.loop(0);
     stroke=false;
     stroke1=false;
     stroke2=false;
@@ -1181,6 +1208,7 @@ void mousePressed()
   }
   //
   if ( mouseX>strokeX5 && mouseX<strokeX5+strokeWidth5 && mouseY>strokeY5 && mouseY<strokeY5+strokeHeight5 && colorSelect==true ) {
+    song2.loop(0);
     ellipseC=true;
     triangleC=false;
     rectangleC=false;
@@ -1188,6 +1216,7 @@ void mousePressed()
     draw1=true;
   }
   if ( mouseX>strokeX6 && mouseX<strokeX6+strokeWidth6 && mouseY>strokeY6 && mouseY<strokeY6+strokeHeight6 && colorSelect==true ) {
+    song2.loop(0);
     ellipseC=false;
     triangleC=true;
     rectangleC=false;
@@ -1195,6 +1224,7 @@ void mousePressed()
     draw1=true;
   }
   if ( mouseX>strokeX7 && mouseX<strokeX7+strokeWidth7 && mouseY>strokeY7 && mouseY<strokeY7+strokeHeight7 && colorSelect==true ) {
+    song2.loop(0);
     ellipseC=false;
     triangleC=false;
     rectangleC=true;
@@ -1202,9 +1232,10 @@ void mousePressed()
     draw1=true;
   }
   //
-  if ( mouseX>buttonX && mouseX<buttonX+buttonWidth && mouseY>buttonY && mouseY<buttonY+buttonHeight ) exit();
+  if ( mouseX>buttonX && mouseX<buttonX+buttonWidth && mouseY>buttonY && mouseY<buttonY+buttonHeight ) {exit(); song2.loop(0);}
   //
   if ( mouseX>buttonX1 && mouseX<buttonX1+buttonWidth1 && mouseY>buttonY1 && mouseY<buttonY1+buttonHeight1 ) {
+    song2.loop(0);
     if ( colorSelect==false ) { 
       colorSelect=true;
       colorSelect1=false;
@@ -1218,6 +1249,7 @@ void mousePressed()
     }
   }
   if ( mouseX>buttonX2 && mouseX<buttonX2+buttonWidth2 && mouseY>buttonY2 && mouseY<buttonY2+buttonHeight2 ) {
+    song2.loop(0);
     if ( colorSelect1==false ) { 
       colorSelect1=true;
       colorSelect=false;
@@ -1232,6 +1264,7 @@ void mousePressed()
   }
   //
   if ( mouseX>buttonX3 && mouseX<buttonX3+buttonWidth3 && mouseY>buttonY3 && mouseY<buttonY3+buttonHeight3 ) {
+    song2.loop(0);
     if ( music==false ) { 
       music=true;
       colorSelect=false;
@@ -1246,6 +1279,7 @@ void mousePressed()
   }
   //
   if ( mouseX>imgX4 && mouseX<imgX4+picWidthAdjusted4 && mouseY>imgY4 && mouseY<imgY4+picHeightAdjusted4 && colorSelect1==true ) {
+    song2.loop(0);
     if ( piC4==false ) {
       fill(backgroundColor);
       rect( drawingSurfaceX, drawingSurfaceY, drawingSurfaceWidth, drawingSurfaceHeight );
@@ -1264,6 +1298,7 @@ void mousePressed()
   }
   //
   if ( mouseX>imgX5 && mouseX<imgX5+picWidthAdjusted5 && mouseY>imgY5 && mouseY<imgY5+picHeightAdjusted5 && colorSelect1==true ) {
+    song2.loop(0);
     if ( piC5==false ) {
       fill(backgroundColor);
       rect( drawingSurfaceX, drawingSurfaceY, drawingSurfaceWidth, drawingSurfaceHeight );
@@ -1282,6 +1317,7 @@ void mousePressed()
   }
   //
   if ( mouseX>imgX6 && mouseX<imgX6+picWidthAdjusted6 && mouseY>imgY6 && mouseY<imgY6+picHeightAdjusted6 && colorSelect1==true ) {
+    song2.loop(0);
     if ( piC6==false ) {
       fill(backgroundColor);
       rect( drawingSurfaceX, drawingSurfaceY, drawingSurfaceWidth, drawingSurfaceHeight );
