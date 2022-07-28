@@ -39,6 +39,9 @@ float strokeX1, strokeY1, strokeWidth1, strokeHeight1;
 float strokeX2, strokeY2, strokeWidth2, strokeHeight2;
 float strokeX3, strokeY3, strokeWidth3, strokeHeight3;
 float strokeX4, strokeY4, strokeWidth4, strokeHeight4;
+float strokeX5, strokeY5, strokeWidth5, strokeHeight5;
+float strokeX6, strokeY6, strokeWidth6, strokeHeight6;
+float strokeX7, strokeY7, strokeWidth7, strokeHeight7;
 float strokeXZ, strokeYZ, strokeWidthZ, strokeHeightZ;
 float strokeXZ1, strokeYZ1, strokeWidthZ1, strokeHeightZ1;
 float strokeXZ2, strokeYZ2, strokeWidthZ2, strokeHeightZ2;
@@ -171,6 +174,21 @@ void setup()
   strokeY4 = centerY+appHeight*7/20;
   strokeWidth4 = colorRectHeight;
   strokeHeight4 = colorRectHeight/2;
+  //
+  strokeX5 = (centerX-appWidth*39/80)+colorRectHeight*5;
+  strokeY5 = (centerY+appHeight*7/20)+colorRectHeight/2;
+  strokeWidth5 = colorRectWidth/6;
+  strokeHeight5 = colorRectHeight/2;
+  //
+  strokeX6 = (centerX-appWidth*39/80)+colorRectHeight*5+colorRectWidth/6;
+  strokeY6 = (centerY+appHeight*7/20)+colorRectHeight/2;
+  strokeWidth6 = colorRectWidth/6;
+  strokeHeight6 = colorRectHeight/2;
+  //
+  strokeX7 = (centerX-appWidth*39/80)+colorRectHeight*5+colorRectWidth*2/6;
+  strokeY7 = (centerY+appHeight*7/20)+colorRectHeight/2;
+  strokeWidth7 = colorRectWidth/6;
+  strokeHeight7 = colorRectHeight/2;
   //
   strokeXZ = (centerX-appWidth*39/80)+colorRectHeight*5;
   strokeYZ = centerY+appHeight*7/20;
@@ -685,7 +703,47 @@ void draw()
     line(strokeX4, (strokeY+strokeHeight/2), strokeX4+strokeWidth4, (strokeY+strokeHeight/2));
     strokeWeight(1);
     strokeCap(ROUND);
+    //
+    if ( mouseX>strokeX5 && mouseX<strokeX5+strokeWidth5 && mouseY>strokeY5 && mouseY<strokeY5+strokeHeight5 ) {
+      buttonFill = gray;
+    } else {
+      buttonFill = resetWhite;
+    }//End Hover-over
+    fill(buttonFill);
+    rect(strokeX5, strokeY5, strokeWidth5, strokeHeight5);
+    fill(resetButtonColour);
+    //
+    if ( mouseX>strokeX6 && mouseX<strokeX6+strokeWidth6 && mouseY>strokeY6 && mouseY<strokeY6+strokeHeight6 ) {
+      buttonFill = gray;
+    } else {
+      buttonFill = resetWhite;
+    }//End Hover-over
+    fill(buttonFill);
+    rect(strokeX6, strokeY6, strokeWidth6, strokeHeight6);
+    fill(resetButtonColour);
+    //
+    if ( mouseX>strokeX7 && mouseX<strokeX7+strokeWidth7 && mouseY>strokeY7 && mouseY<strokeY7+strokeHeight7 ) {
+      buttonFill = gray;
+    } else {
+      buttonFill = resetWhite;
+    }//End Hover-over
+    fill(buttonFill);
+    rect(strokeX7, strokeY7, strokeWidth7, strokeHeight7);
+    fill(resetButtonColour);
   }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   //
   if ( colorSelect1==true ) {
     fill(resetWhite);
