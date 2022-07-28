@@ -20,6 +20,7 @@ float imgX4Demo, imgY4Demo, imgWidth4Demo, imgHeight4Demo, imageLargerDimension4
 float imgX5Demo, imgY5Demo, imgWidth5Demo, imgHeight5Demo, imageLargerDimension5Demo, imageSmallerDimension5Demo, imageWidthRatio5Demo=0.0, imageHeightRatio5Demo=0.0;
 float imgX6Demo, imgY6Demo, imgWidth6Demo, imgHeight6Demo, imageLargerDimension6Demo, imageSmallerDimension6Demo, imageWidthRatio6Demo=0.0, imageHeightRatio6Demo=0.0;
 float drawingSurfaceX, drawingSurfaceY, drawingSurfaceWidth, drawingSurfaceHeight, drawingDiameter;
+float ellipseDia; 
 float buttonX, buttonY, buttonWidth, buttonHeight;
 float buttonX1, buttonY1, buttonWidth1, buttonHeight1;
 float buttonX2, buttonY2, buttonWidth2, buttonHeight2;
@@ -48,7 +49,7 @@ float strokeXZ2, strokeYZ2, strokeWidthZ2, strokeHeightZ2;
 float picWidthAdjusted, picHeightAdjusted, picWidthAdjusted1, picHeightAdjusted1, picWidthAdjusted2, picHeightAdjusted2, picWidthAdjusted3, picHeightAdjusted3, picWidthAdjusted4, picHeightAdjusted4, picWidthAdjusted5, picHeightAdjusted5, picWidthAdjusted6, picHeightAdjusted6, picWidthAdjusted4Demo, picHeightAdjusted4Demo, picWidthAdjusted5Demo, picHeightAdjusted5Demo, picWidthAdjusted6Demo, picHeightAdjusted6Demo;
 float backGroundX, backGroundY, backGroundWidth, backGroundHeight; 
 Boolean widthLarger = false, heightLarger = false, widthLarger1 = false, heightLarger1 = false, widthLarger2 = false, heightLarger2 = false, widthLarger3 = false, heightLarger3 = false, widthLarger4 = false, heightLarger4 = false, widthLarger5 = false, heightLarger5 = false, widthLarger6 = false, heightLarger6 = false, widthLarger4Demo = false, heightLarger4Demo = false, widthLarger5Demo = false, heightLarger5Demo = false, widthLarger6Demo = false, heightLarger6Demo = false;
-Boolean draw=false, colorSelect=false, backGround=false, colorSelect1=false;
+Boolean draw=true, draw1=false, colorSelect=false, backGround=false, colorSelect1=false, ellipseC=false, triangleC=false, rectangleC=false;
 Boolean yellowC=false, pinkC=false, greenC=false, orangeC=false, blueC=false, purpleC=false, redC=false, blackC=true, eraseC=false;
 Boolean yellowC1=false, pinkC1=false, greenC1=false, orangeC1=false, blueC1=false, purpleC1=false, redC1=false, blackC1=false, whiteC1=true;
 Boolean stroke=true, stroke1=false, stroke2=false, stroke3=false, stroke4=false, run=false, piC4=false, piC5=false, piC6=false;
@@ -72,6 +73,15 @@ void setup()
   drawingSurfaceWidth = appWidth*3/4;
   drawingSurfaceHeight = appHeight*4/5;//Use appWidth and appHeight (this is only an example)
   drawingDiameter = appWidth*1/100;
+  //
+  //stamp
+  //
+  ellipseDia = appWidth/30;//Use for both hight and width of ellipse
+  //
+  strokeX6 = (centerX-appWidth*39/80)+colorRectHeight*5+colorRectWidth/6;
+  strokeY6 = (centerY+appHeight*7/20)+colorRectHeight/2;
+  strokeWidth6 = colorRectWidth/6;
+  strokeHeight6 = colorRectHeight/2;
   //
   //button
   //
@@ -100,16 +110,13 @@ void setup()
   colorRectWidth1 = appWidth*239/320;
   colorRectHeight1 = appHeight*5/40;
   //
-
-
   //color switches
-
+  //
   colorX = centerX-appWidth*39/80;
   colorY = centerY+appHeight*7/20;
   colorWidth = colorRectHeight;
   colorHeight = colorRectHeight/2;
   //
-
   colorX1 = (centerX-appWidth*39/80)+colorRectHeight;
   colorY1 = centerY+appHeight*7/20;
   colorWidth1 = colorRectHeight;
@@ -204,10 +211,10 @@ void setup()
   strokeYZ2 = centerY+appHeight*7/20;
   strokeWidthZ2 = colorRectWidth/6;
   strokeHeightZ2 = colorRectHeight;
-
-
+  //
+  //pic
+  //
   pic = loadImage("../images/free-exit-logout-icon-2857-thumb.png"); //Dimentions: width: 512 height: 512
-
   int picWidth = 512;
   int picHeight = 512;
   if ( picWidth >= picHeight ) {
@@ -221,7 +228,6 @@ void setup()
     heightLarger = true;
   }
   println(imgX, imgY, picWidthAdjusted, picHeightAdjusted);
-
   if ( widthLarger == true ) imageWidthRatio = imageLargerDimension/imageLargerDimension;
   if ( widthLarger == true ) imageHeightRatio = imageSmallerDimension/imageLargerDimension;
   if ( heightLarger == true ) imageWidthRatio = imageSmallerDimension/imageLargerDimension;
@@ -233,10 +239,7 @@ void setup()
   imgHeight = buttonHeight;
   picWidthAdjusted = imgWidth * imageWidthRatio;
   picHeightAdjusted = imgHeight * imageHeightRatio;
-
   //
-
-
   pic1 = loadImage("../images/3074740.png"); //Dimentions: width: 512 height: 512
   int picWidth1 = 512;
   int picHeight1 = 512;
@@ -251,7 +254,6 @@ void setup()
     heightLarger = true;
   }
   println(imgX1, imgY1, picWidthAdjusted1, picHeightAdjusted1);
-
   if ( widthLarger1 == true ) imageWidthRatio1 = imageLargerDimension1/imageLargerDimension1;
   if ( widthLarger1 == true ) imageHeightRatio1 = imageSmallerDimension1/imageLargerDimension1;
   if ( heightLarger1 == true ) imageWidthRatio1 = imageSmallerDimension1/imageLargerDimension1;
@@ -265,7 +267,6 @@ void setup()
   picHeightAdjusted1 = imgHeight * imageHeightRatio;
   //
   pic2 = loadImage("../images/1827954.png"); //Dimentions: width: 512 height: 512
-
   int picWidth2 = 512;
   int picHeight2 = 512;
   if ( picWidth2 >= picHeight2 ) {
@@ -279,7 +280,6 @@ void setup()
     heightLarger2 = true;
   }
   println(imgX2, imgY2, picWidthAdjusted2, picHeightAdjusted2);
-
   if ( widthLarger2 == true ) imageWidthRatio2 = imageLargerDimension2/imageLargerDimension2;
   if ( widthLarger2 == true ) imageHeightRatio2 = imageSmallerDimension2/imageLargerDimension2;
   if ( heightLarger2 == true ) imageWidthRatio2 = imageSmallerDimension2/imageLargerDimension2;
@@ -291,12 +291,8 @@ void setup()
   imgHeight2 = eraserHeight;
   picWidthAdjusted2 = imgWidth2 * imageWidthRatio2;
   picHeightAdjusted2 = imgHeight2 * imageHeightRatio2;
-
-
-
   //
   pic3 = loadImage("../images/1663167-200.png"); //Dimentions: width: 200 height: 200
-
   int picWidth3 = 200;
   int picHeight3 = 200;
   if ( picWidth3 >= picHeight3 ) {
@@ -310,7 +306,6 @@ void setup()
     heightLarger = true;
   }
   println(imgX3, imgY3, picWidthAdjusted3, picHeightAdjusted3);
-
   if ( widthLarger3 == true ) imageWidthRatio3 = imageLargerDimension3/imageLargerDimension3;
   if ( widthLarger3 == true ) imageHeightRatio3 = imageSmallerDimension3/imageLargerDimension3;
   if ( heightLarger3 == true ) imageWidthRatio3 = imageSmallerDimension3/imageLargerDimension3;
@@ -322,10 +317,8 @@ void setup()
   imgHeight3 = buttonHeight;
   picWidthAdjusted3 = imgWidth3 * imageWidthRatio3;
   picHeightAdjusted3 = imgHeight3 * imageHeightRatio3;
-
   //
   pic4 = loadImage("../images/ab7fc9be5ab8b32cd4c38a57c7219d67.png"); //Dimentions: width: 3300 height: 2550
-
   int picWidth4 = 3300;
   int picHeight4 = 2550;
   if ( picWidth4 >= picHeight4 ) {
@@ -339,7 +332,6 @@ void setup()
     heightLarger4 = true;
   }
   println(imgX4, imgY4, picWidthAdjusted4, picHeightAdjusted4);
-
   if ( widthLarger4 == true ) imageWidthRatio4 = imageLargerDimension4/imageLargerDimension4;
   if ( widthLarger4 == true ) imageHeightRatio4 = imageSmallerDimension4/imageLargerDimension4;
   if ( heightLarger4 == true ) imageWidthRatio4 = imageSmallerDimension4/imageLargerDimension4;
@@ -353,7 +345,6 @@ void setup()
   picHeightAdjusted4 = imgHeight4 * imageHeightRatio4;
   //
   pic5 = loadImage("../images/799-7996851_130-latest-pokemon-coloring-pages-for-kids-and.png"); //Dimentions: width: 947 height: 730
-
   int picWidth5 = 947;
   int picHeight5 = 730;
   if ( picWidth5 >= picHeight5 ) {
@@ -367,7 +358,6 @@ void setup()
     heightLarger5 = true;
   }
   println(imgX5, imgY5, picWidthAdjusted5, picHeightAdjusted5);
-
   if ( widthLarger5 == true ) imageWidthRatio5 = imageLargerDimension5/imageLargerDimension5;
   if ( widthLarger5 == true ) imageHeightRatio5 = imageSmallerDimension5/imageLargerDimension5;
   if ( heightLarger5 == true ) imageWidthRatio5 = imageSmallerDimension5/imageLargerDimension5;
@@ -379,10 +369,8 @@ void setup()
   imgHeight5 = colorRectHeight*195/150;
   picWidthAdjusted5 = imgWidth5 * imageWidthRatio5;
   picHeightAdjusted5 = imgHeight5 * imageHeightRatio5;
-
   //
   pic6 = loadImage("../images/Kijgpqg5T.png"); //Dimentions: width: 1000 height: 1000
-
   int picWidth6 = 1000;
   int picHeight6 = 1000;
   if ( picWidth6 >= picHeight6 ) {
@@ -396,7 +384,6 @@ void setup()
     heightLarger6 = true;
   }
   println(imgX6, imgY6, picWidthAdjusted6, picHeightAdjusted6);
-
   if ( widthLarger6 == true ) imageWidthRatio6 = imageLargerDimension6/imageLargerDimension6;
   if ( widthLarger6 == true ) imageHeightRatio6 = imageSmallerDimension6/imageLargerDimension6;
   if ( heightLarger6 == true ) imageWidthRatio6 = imageSmallerDimension6/imageLargerDimension6;
@@ -408,20 +395,8 @@ void setup()
   imgHeight6 = colorRectHeight;
   picWidthAdjusted6 = imgWidth6 * imageWidthRatio6;
   picHeightAdjusted6 = imgHeight6 * imageHeightRatio6;
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  //
   pic4Demo = loadImage("../images/ab7fc9be5ab8b32cd4c38a57c7219d67_MINI.png"); //Dimentions: width: 1039 height: 803
-
   int picWidth4Demo = 1039;
   int picHeight4Demo = 803;
   if ( picWidth4Demo >= picHeight4Demo ) {
@@ -435,7 +410,6 @@ void setup()
     heightLarger4Demo = true;
   }
   println(imgX4Demo, imgY4Demo, picWidthAdjusted4Demo, picHeightAdjusted4Demo);
-
   if ( widthLarger4Demo == true ) imageWidthRatio4Demo = imageLargerDimension4Demo/imageLargerDimension4Demo;
   if ( widthLarger4Demo == true ) imageHeightRatio4Demo = imageSmallerDimension4Demo/imageLargerDimension4Demo;
   if ( heightLarger4Demo == true ) imageWidthRatio4Demo = imageSmallerDimension4Demo/imageLargerDimension4Demo;
@@ -449,7 +423,6 @@ void setup()
   picHeightAdjusted4Demo = imgHeight4Demo * imageHeightRatio4Demo;
   //
   pic5Demo = loadImage("../images/799-7996851_130-latest-pokemon-coloring-pages-for-kids-and_MINI.png"); //Dimentions: width: 295 height: 227
-
   int picWidth5Demo = 295;
   int picHeight5Demo = 227;
   if ( picWidth5Demo >= picHeight5Demo ) {
@@ -463,7 +436,6 @@ void setup()
     heightLarger5Demo = true;
   }
   println(imgX5Demo, imgY5Demo, picWidthAdjusted5Demo, picHeightAdjusted5Demo);
-
   if ( widthLarger5Demo == true ) imageWidthRatio5Demo = imageLargerDimension5Demo/imageLargerDimension5Demo;
   if ( widthLarger5Demo == true ) imageHeightRatio5Demo = imageSmallerDimension5Demo/imageLargerDimension5Demo;
   if ( heightLarger5Demo == true ) imageWidthRatio5Demo = imageSmallerDimension5Demo/imageLargerDimension5Demo;
@@ -475,10 +447,8 @@ void setup()
   imgHeight5Demo = colorRectHeight*195/150;
   picWidthAdjusted5Demo = imgWidth5Demo * imageWidthRatio5Demo;
   picHeightAdjusted5Demo = imgHeight5Demo * imageHeightRatio5Demo;
-
   //
   pic6Demo = loadImage("../images/Kijgpqg5T_MINI.png"); //Dimentions: width: 477 height: 477
-
   int picWidth6Demo = 477;
   int picHeight6Demo = 477;
   if ( picWidth6Demo >= picHeight6Demo ) {
@@ -492,7 +462,6 @@ void setup()
     heightLarger6Demo = true;
   }
   println(imgX6Demo, imgY6Demo, picWidthAdjusted6Demo, picHeightAdjusted6Demo);
-
   if ( widthLarger6Demo == true ) imageWidthRatio6Demo = imageLargerDimension6Demo/imageLargerDimension6Demo;
   if ( widthLarger6Demo == true ) imageHeightRatio6Demo = imageSmallerDimension6Demo/imageLargerDimension6Demo;
   if ( heightLarger6Demo == true ) imageWidthRatio6Demo = imageSmallerDimension6Demo/imageLargerDimension6Demo;
@@ -504,39 +473,27 @@ void setup()
   imgHeight6Demo = colorRectHeight;
   picWidthAdjusted6Demo = imgWidth6Demo * imageWidthRatio6Demo;
   picHeightAdjusted6Demo = imgHeight6Demo * imageHeightRatio6Demo;
-  
-  
-  
-  
-  
-  
-  
-  
-  
-
-  //
   //
   backGroundX = centerX-appWidth*39/80;
   backGroundY = centerY+appHeight*7/20;
   backGroundWidth = appWidth*239/320;
   backGroundHeight = appHeight*5/40;
-
   //
   backColorSetup();
   fill(backgroundColor);
   rect( drawingSurfaceX, drawingSurfaceY, drawingSurfaceWidth, drawingSurfaceHeight );
   fill(resetWhite);
-
-  /*fill(backgroundColor);
-   rect( drawingSurfaceX, drawingSurfaceY, drawingSurfaceWidth, drawingSurfaceHeight );
-   fill(resetWhite);*/
-
-
   //
 }//End setup
 //
 void draw() 
 {
+  if ( mousePressed==true && draw1==true && mouseX> drawingSurfaceX && mouseX< drawingSurfaceX+drawingSurfaceWidth && mouseY>drawingSurfaceY && mouseY<drawingSurfaceY+drawingSurfaceHeight ) {
+    colorSetup();
+    stampSetup();
+    fill(resetWhite);
+    stroke(black);
+  }
   if ( run==true ) {
     backColorSetup();
     fill(backgroundColor);
@@ -544,12 +501,6 @@ void draw()
     fill(resetWhite);
   }
   backColorPattern();
-
-
-
-
-
-
   //Hover-over
   if ( mouseX>buttonX && mouseX<buttonX+buttonWidth && mouseY>buttonY && mouseY<buttonY+buttonHeight ) {
     buttonFill = lightgreen1;
@@ -580,9 +531,6 @@ void draw()
   rect(buttonX2, buttonY2, buttonWidth2, buttonHeight2);
   fill(resetButtonColour);
   image(pic3, imgX3, imgY3, picWidthAdjusted3, picHeightAdjusted3);
-
-
-
   //
   //colorSelector
   //
@@ -628,7 +576,6 @@ void draw()
     //strokes
     //
     fill(resetWhite);
-
     //Hover-over
     if ( mouseX>strokeX && mouseX<strokeX+strokeWidth && mouseY>strokeY && mouseY<strokeY+strokeHeight ) {
       buttonFill = gray;
@@ -712,6 +659,7 @@ void draw()
     fill(buttonFill);
     rect(strokeX5, strokeY5, strokeWidth5, strokeHeight5);
     fill(resetButtonColour);
+    ellipse( strokeX5+strokeWidth5/2, strokeY5+strokeHeight5/2, ellipseDia, ellipseDia);
     //
     if ( mouseX>strokeX6 && mouseX<strokeX6+strokeWidth6 && mouseY>strokeY6 && mouseY<strokeY6+strokeHeight6 ) {
       buttonFill = gray;
@@ -721,6 +669,7 @@ void draw()
     fill(buttonFill);
     rect(strokeX6, strokeY6, strokeWidth6, strokeHeight6);
     fill(resetButtonColour);
+    triangle(strokeX6+strokeWidth6/2, strokeY6, strokeX6+strokeWidth6/3, strokeY6+strokeHeight6, strokeX6+strokeWidth6*2/3, strokeY6+strokeHeight6);
     //
     if ( mouseX>strokeX7 && mouseX<strokeX7+strokeWidth7 && mouseY>strokeY7 && mouseY<strokeY7+strokeHeight7 ) {
       buttonFill = gray;
@@ -730,20 +679,8 @@ void draw()
     fill(buttonFill);
     rect(strokeX7, strokeY7, strokeWidth7, strokeHeight7);
     fill(resetButtonColour);
+    rect( strokeX7+strokeWidth7/2-strokeHeight7/2, strokeY7, strokeHeight7, strokeHeight7);
   }
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   //
   if ( colorSelect1==true ) {
     fill(resetWhite);
@@ -805,35 +742,7 @@ void draw()
     image(pic6Demo, imgX6Demo, imgY6Demo, picWidthAdjusted6Demo, picHeightAdjusted6Demo);
     //
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   //
-
   if ( backGround==true ) {
     fill(#CCCCCC);
     stroke(#CCCCCC);
@@ -842,15 +751,13 @@ void draw()
     stroke(black);
   }
   //
-  if (mousePressed==true && mouseX> drawingSurfaceX && mouseX< drawingSurfaceX+drawingSurfaceWidth && mouseY>drawingSurfaceY && mouseY<drawingSurfaceY+drawingSurfaceHeight ) {
+  if ( draw==true && mousePressed==true && mouseX> drawingSurfaceX && mouseX< drawingSurfaceX+drawingSurfaceWidth && mouseY>drawingSurfaceY && mouseY<drawingSurfaceY+drawingSurfaceHeight ) {
     colorSetup(); 
     strokeSetup();
     line(mouseX, mouseY, pmouseX, pmouseY); 
     strokeWeight(1);
     stroke(black);
   }
-
-
   //Example drawing tool {stroke(blue); strokeWeight(); line(mouseX, mouseY, pmouseX, pmouseY); stroke(black);}
   //
 }//End draw
@@ -1091,15 +998,14 @@ void mousePressed()
   //
   //Stroke select
   //
-
-
-
   if ( mouseX>strokeX && mouseX<strokeX+strokeWidth && mouseY>strokeY && mouseY<strokeY+strokeHeight && colorSelect==true ) {
     stroke=true;
     stroke1=false;
     stroke2=false;
     stroke3=false;
     stroke4=false;
+    draw=true;
+    draw1=false;
   }
   //
   if ( mouseX>strokeX1 && mouseX<strokeX1+strokeWidth1 && mouseY>strokeY1 && mouseY<strokeY1+strokeHeight1 && colorSelect==true ) {
@@ -1108,6 +1014,8 @@ void mousePressed()
     stroke2=false;
     stroke3=false;
     stroke4=false;
+    draw=true;
+    draw1=false;
   }
   //
   if ( mouseX>strokeX2 && mouseX<strokeX2+strokeWidth2 && mouseY>strokeY2 && mouseY<strokeY2+strokeHeight2 && colorSelect==true ) {
@@ -1116,6 +1024,8 @@ void mousePressed()
     stroke2=true;
     stroke3=false;
     stroke4=false;
+    draw=true;
+    draw1=false;
   }
   //
   if ( mouseX>strokeX3 && mouseX<strokeX3+strokeWidth3 && mouseY>strokeY3 && mouseY<strokeY3+strokeHeight3 && colorSelect==true ) {
@@ -1124,6 +1034,8 @@ void mousePressed()
     stroke2=false;
     stroke3=true;
     stroke4=false;
+    draw=true;
+    draw1=false;
   }
   //
   if ( mouseX>strokeX4 && mouseX<strokeX4+strokeWidth4 && mouseY>strokeY4 && mouseY<strokeY4+strokeHeight4 && colorSelect==true ) {
@@ -1132,15 +1044,31 @@ void mousePressed()
     stroke2=false;
     stroke3=false;
     stroke4=true;
+    draw=true;
+    draw1=false;
   }
   //
-
-
-
-
-
-
-
+  if ( mouseX>strokeX5 && mouseX<strokeX5+strokeWidth5 && mouseY>strokeY5 && mouseY<strokeY5+strokeHeight5 && colorSelect==true ) {
+    ellipseC=true;
+    triangleC=false;
+    rectangleC=false;
+    draw=false;
+    draw1=true;
+  }
+  if ( mouseX>strokeX6 && mouseX<strokeX6+strokeWidth6 && mouseY>strokeY6 && mouseY<strokeY6+strokeHeight6 && colorSelect==true ) {
+    ellipseC=false;
+    triangleC=true;
+    rectangleC=false;
+    draw=false;
+    draw1=true;
+  }
+  if ( mouseX>strokeX7 && mouseX<strokeX7+strokeWidth7 && mouseY>strokeY7 && mouseY<strokeY7+strokeHeight7 && colorSelect==true ) {
+    ellipseC=false;
+    triangleC=false;
+    rectangleC=true;
+    draw=false;
+    draw1=true;
+  }
   //
   if ( mouseX>buttonX && mouseX<buttonX+buttonWidth && mouseY>buttonY && mouseY<buttonY+buttonHeight ) exit();
   //
@@ -1155,7 +1083,6 @@ void mousePressed()
       colorSelect1=false;
     }
   }
-
   if ( mouseX>buttonX2 && mouseX<buttonX2+buttonWidth2 && mouseY>buttonY2 && mouseY<buttonY2+buttonHeight2 ) {
     if ( colorSelect1==false ) { 
       colorSelect1=true;
@@ -1220,19 +1147,7 @@ void mousePressed()
       fill(resetWhite);
     }
   }
-
   //
-
-  //
-  /* (this might not be needed)
-   if ( mouseX> drawingSurfaceX && mouseX< drawingSurfaceX+drawingSurfaceWidth && mouseY>drawingSurfaceY && mouseY<drawingSurfaceY+drawingSurfaceHeight ) {
-   if ( draw == true ) { 
-   draw = false;
-   } else {
-   draw = true;
-   }
-   }//End drawing tools
-   */
 }//End mousePressed
 //
 //End MAIN Program
