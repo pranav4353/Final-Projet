@@ -520,16 +520,6 @@ void setup()
   imgHeight7 = appHeight/10;
   picWidthAdjusted7 = imgWidth7 * imageWidthRatio7;
   picHeightAdjusted7 = imgHeight7 * imageHeightRatio7;
-
-
-
-
-
-  /* buttonX3 = centerX+appWidth*13/40;
-   buttonY3 = buttonHeight*3;
-   buttonWidth3 = appWidth*14/80;
-   buttonHeight3 = appHeight/10;*/
-
   //
   backGroundX = centerX-appWidth*39/80;
   backGroundY = centerY+appHeight*7/20;
@@ -893,7 +883,8 @@ void draw()
     strokeWeight(1);
     stroke(black);
   }
-
+  //
+  song();
   //Example drawing tool {stroke(blue); strokeWeight(); line(mouseX, mouseY, pmouseX, pmouseY); stroke(black);}
   //
 }//End draw
@@ -1232,7 +1223,10 @@ void mousePressed()
     draw1=true;
   }
   //
-  if ( mouseX>buttonX && mouseX<buttonX+buttonWidth && mouseY>buttonY && mouseY<buttonY+buttonHeight ) {exit(); song2.loop(0);}
+  if ( mouseX>buttonX && mouseX<buttonX+buttonWidth && mouseY>buttonY && mouseY<buttonY+buttonHeight ) {
+    exit(); 
+    song2.loop(0);
+  }
   //
   if ( mouseX>buttonX1 && mouseX<buttonX1+buttonWidth1 && mouseY>buttonY1 && mouseY<buttonY1+buttonHeight1 ) {
     song2.loop(0);
