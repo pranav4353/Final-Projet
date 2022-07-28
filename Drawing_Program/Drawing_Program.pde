@@ -7,7 +7,10 @@ import ddf.minim.ugens.*;
 
 
 //Global Variables
-PImage pic, pic1, pic2, pic3, pic4, pic5, pic6, pic4Demo, pic5Demo, pic6Demo;
+Minim minim; 
+AudioPlayer song1; 
+AudioMetaData songMetaData1;
+PImage pic, pic1, pic2, pic3, pic4, pic5, pic6, pic4Demo, pic5Demo, pic6Demo, pic7, pic8, pic9, pic10, pic11, pic12, pic13, pic14;
 float appHeight, appWidth;
 float imgX, imgY, imgWidth, imgHeight, imageLargerDimension, imageSmallerDimension, imageWidthRatio=0.0, imageHeightRatio=0.0;
 float imgX1, imgY1, imgWidth1, imgHeight1, imageLargerDimension1, imageSmallerDimension1, imageWidthRatio1=0.0, imageHeightRatio1=0.0;
@@ -19,11 +22,13 @@ float imgX6, imgY6, imgWidth6, imgHeight6, imageLargerDimension6, imageSmallerDi
 float imgX4Demo, imgY4Demo, imgWidth4Demo, imgHeight4Demo, imageLargerDimension4Demo, imageSmallerDimension4Demo, imageWidthRatio4Demo=0.0, imageHeightRatio4Demo=0.0;
 float imgX5Demo, imgY5Demo, imgWidth5Demo, imgHeight5Demo, imageLargerDimension5Demo, imageSmallerDimension5Demo, imageWidthRatio5Demo=0.0, imageHeightRatio5Demo=0.0;
 float imgX6Demo, imgY6Demo, imgWidth6Demo, imgHeight6Demo, imageLargerDimension6Demo, imageSmallerDimension6Demo, imageWidthRatio6Demo=0.0, imageHeightRatio6Demo=0.0;
+float imgX7, imgY7, imgWidth7, imgHeight7, imageLargerDimension7, imageSmallerDimension7, imageWidthRatio7=0.0, imageHeightRatio7=0.0;
 float drawingSurfaceX, drawingSurfaceY, drawingSurfaceWidth, drawingSurfaceHeight, drawingDiameter;
 float ellipseDia; 
 float buttonX, buttonY, buttonWidth, buttonHeight;
 float buttonX1, buttonY1, buttonWidth1, buttonHeight1;
 float buttonX2, buttonY2, buttonWidth2, buttonHeight2;
+float buttonX3, buttonY3, buttonWidth3, buttonHeight3;
 float colorRectX, colorRectY, colorRectWidth, colorRectHeight;
 float colorRectX1, colorRectY1, colorRectWidth1, colorRectHeight1;
 float colorX, colorY, colorWidth, colorHeight;
@@ -46,15 +51,16 @@ float strokeX7, strokeY7, strokeWidth7, strokeHeight7;
 float strokeXZ, strokeYZ, strokeWidthZ, strokeHeightZ;
 float strokeXZ1, strokeYZ1, strokeWidthZ1, strokeHeightZ1;
 float strokeXZ2, strokeYZ2, strokeWidthZ2, strokeHeightZ2;
-float picWidthAdjusted, picHeightAdjusted, picWidthAdjusted1, picHeightAdjusted1, picWidthAdjusted2, picHeightAdjusted2, picWidthAdjusted3, picHeightAdjusted3, picWidthAdjusted4, picHeightAdjusted4, picWidthAdjusted5, picHeightAdjusted5, picWidthAdjusted6, picHeightAdjusted6, picWidthAdjusted4Demo, picHeightAdjusted4Demo, picWidthAdjusted5Demo, picHeightAdjusted5Demo, picWidthAdjusted6Demo, picHeightAdjusted6Demo;
+float picWidthAdjusted, picHeightAdjusted, picWidthAdjusted1, picHeightAdjusted1, picWidthAdjusted2, picHeightAdjusted2, picWidthAdjusted3, picHeightAdjusted3, picWidthAdjusted4, picHeightAdjusted4, picWidthAdjusted5, picHeightAdjusted5, picWidthAdjusted6, picHeightAdjusted6, picWidthAdjusted4Demo, picHeightAdjusted4Demo, picWidthAdjusted5Demo, picHeightAdjusted5Demo, picWidthAdjusted6Demo, picHeightAdjusted6Demo, picWidthAdjusted7, picHeightAdjusted7;
 float backGroundX, backGroundY, backGroundWidth, backGroundHeight; 
-Boolean widthLarger = false, heightLarger = false, widthLarger1 = false, heightLarger1 = false, widthLarger2 = false, heightLarger2 = false, widthLarger3 = false, heightLarger3 = false, widthLarger4 = false, heightLarger4 = false, widthLarger5 = false, heightLarger5 = false, widthLarger6 = false, heightLarger6 = false, widthLarger4Demo = false, heightLarger4Demo = false, widthLarger5Demo = false, heightLarger5Demo = false, widthLarger6Demo = false, heightLarger6Demo = false;
-Boolean draw=true, draw1=false, colorSelect=false, backGround=false, colorSelect1=false, ellipseC=false, triangleC=false, rectangleC=false;
-Boolean yellowC=false, pinkC=false, greenC=false, orangeC=false, blueC=false, purpleC=false, redC=false, blackC=true, eraseC=false;
+Boolean widthLarger = false, heightLarger = false, widthLarger1 = false, heightLarger1 = false, widthLarger2 = false, heightLarger2 = false, widthLarger3 = false, heightLarger3 = false, widthLarger4 = false, heightLarger4 = false, widthLarger5 = false, heightLarger5 = false, widthLarger6 = false, heightLarger6 = false, widthLarger4Demo = false, heightLarger4Demo = false, widthLarger5Demo = false, heightLarger5Demo = false, widthLarger6Demo = false, heightLarger6Demo = false, widthLarger7 = false, heightLarger7 = false;
+Boolean draw=true, draw1=false, colorSelect=false, backGround=false, colorSelect1=false, music=false, ellipseC=false, triangleC=false, rectangleC=false;
+Boolean yellowC=false, pinkC=false, greenC=false, orangeC=false, blueC=false, purpleC=false, redC=false, blackC=true, eraseC=false, play=false, mute=false;
 Boolean yellowC1=false, pinkC1=false, greenC1=false, orangeC1=false, blueC1=false, purpleC1=false, redC1=false, blackC1=false, whiteC1=true;
 Boolean stroke=true, stroke1=false, stroke2=false, stroke3=false, stroke4=false, run=false, piC4=false, piC5=false, piC6=false;
 color lightgreen1=#48A4BC, green1=#117659, resetButtonColour, buttonFill, resetWhite=#fcfcfc, gray=#5A5A5A, resetBackground=#fcfcfc, backgroundColor;
 color yellow=#F5E639, pink=#ED5DE6, green=#4CDE65, orange=#F5B128, blue=#2545F5, purple=#A11EE8, red=#E8251E, black=#000000;
+int centerX, centerY;
 //
 void setup() 
 {
@@ -62,6 +68,12 @@ void setup()
   //Display Orientation Checker
   //Display and CANVAS Checker
   size(1500, 900); //Landscape (Portrait or Square)
+  //
+  minim = new Minim(this); 
+  song1 = minim.loadFile("Ghost_Walk.mp3");
+  songMetaData1 = song1.getMetaData();
+  //
+  musicPic();
   //
   //Pouplation
   int appWidth = width;
@@ -99,6 +111,11 @@ void setup()
   buttonY2 = buttonHeight*2;
   buttonWidth2 = appWidth*14/80;
   buttonHeight2 = appHeight/10;
+  //
+  buttonX3 = centerX+appWidth*13/40;
+  buttonY3 = buttonHeight*3;
+  buttonWidth3 = appWidth*14/80;
+  buttonHeight3 = appHeight/10;
   //
   colorRectX = centerX-appWidth*39/80;
   colorRectY = centerY+appHeight*7/20;
@@ -474,6 +491,42 @@ void setup()
   picWidthAdjusted6Demo = imgWidth6Demo * imageWidthRatio6Demo;
   picHeightAdjusted6Demo = imgHeight6Demo * imageHeightRatio6Demo;
   //
+  pic7 = loadImage("../images/1122516-200.png"); //Dimentions: width: 200 height: 200
+  int picWidth7 = 200;
+  int picHeight7 = 200;
+  if ( picWidth7 >= picHeight7 ) {
+    imageLargerDimension7 = picWidth7;
+    imageSmallerDimension7 = picHeight7;
+    widthLarger7 = true;
+  } else {
+    //False if Portrait
+    imageLargerDimension7 = picHeight7;
+    imageSmallerDimension7 = picWidth7;
+    heightLarger7 = true;
+  }
+  println(imgX7, imgY7, picWidthAdjusted7, picHeightAdjusted7);
+  if ( widthLarger7 == true ) imageWidthRatio7 = imageLargerDimension7/imageLargerDimension7;
+  if ( widthLarger7 == true ) imageHeightRatio7 = imageSmallerDimension7/imageLargerDimension7;
+  if ( heightLarger7 == true ) imageWidthRatio7 = imageSmallerDimension7/imageLargerDimension7;
+  if ( heightLarger7 == true ) imageWidthRatio7 = imageLargerDimension7/imageLargerDimension7;
+  //
+  imgX7 = centerX+appWidth*15/40;
+  imgY7 = buttonHeight*3;
+  imgWidth7 = appWidth*14/160;
+  imgHeight7 = appHeight/10;
+  picWidthAdjusted7 = imgWidth7 * imageWidthRatio7;
+  picHeightAdjusted7 = imgHeight7 * imageHeightRatio7;
+
+
+
+
+
+  /* buttonX3 = centerX+appWidth*13/40;
+   buttonY3 = buttonHeight*3;
+   buttonWidth3 = appWidth*14/80;
+   buttonHeight3 = appHeight/10;*/
+
+  //
   backGroundX = centerX-appWidth*39/80;
   backGroundY = centerY+appHeight*7/20;
   backGroundWidth = appWidth*239/320;
@@ -531,6 +584,16 @@ void draw()
   rect(buttonX2, buttonY2, buttonWidth2, buttonHeight2);
   fill(resetButtonColour);
   image(pic3, imgX3, imgY3, picWidthAdjusted3, picHeightAdjusted3);
+  //
+  if ( mouseX>buttonX3 && mouseX<buttonX3+buttonWidth3 && mouseY>buttonY3 && mouseY<buttonY3+buttonHeight3 ) {
+    buttonFill = lightgreen1;
+  } else {
+    buttonFill = green1;
+  }//End Hover-over
+  fill(buttonFill);
+  rect(buttonX3, buttonY3, buttonWidth3, buttonHeight3);
+  fill(resetButtonColour);
+  image(pic7, imgX7, imgY7, picWidthAdjusted7, picHeightAdjusted7);
   //
   //colorSelector
   //
@@ -751,6 +814,74 @@ void draw()
     stroke(black);
   }
   //
+  if ( music == true ) {
+    fill(resetWhite);
+    rect(colorRectX, colorRectY, colorRectWidth, colorRectHeight);
+    if ( mouseX>colorX && mouseX<colorX+colorWidth && mouseY>colorY && mouseY<colorY+colorHeight*2 ) {
+      buttonFill = gray;
+    } else {
+      buttonFill = resetWhite;
+    }//End Hover-over
+    fill(buttonFill);
+    rect(colorX, colorY, colorWidth, colorHeight*2);
+    fill(resetButtonColour);
+    image( pic8, colorX, colorY, colorWidth, colorHeight*2 );
+    //
+    if ( mouseX>colorX1 && mouseX<colorX1+colorWidth1 && mouseY>colorY1 && mouseY<colorY1+colorHeight1*2 ) {
+      buttonFill = gray;
+    } else {
+      buttonFill = resetWhite;
+    }//End Hover-over
+    fill(buttonFill);
+    rect(colorX1, colorY1, colorWidth1, colorHeight1*2);
+    fill(resetButtonColour);
+    image( pic9, colorX1, colorY1, colorWidth1, colorHeight1*2 );
+    //
+    if ( mouseX>colorX2 && mouseX<colorX2+colorWidth2 && mouseY>colorY2 && mouseY<colorY2+colorHeight2*2 ) {
+      buttonFill = gray;
+    } else {
+      buttonFill = resetWhite;
+    }//End Hover-over
+    if ( play==true && music==true ) {
+      fill(buttonFill);
+      rect(colorX2, colorY2, colorWidth2, colorHeight2*2);
+      fill(resetButtonColour);
+      image(pic11, colorX2, colorY2, colorWidth2, colorHeight2*2);
+    } else {
+      fill(buttonFill);
+      rect(colorX2, colorY2, colorWidth2, colorHeight2*2);
+      fill(resetButtonColour);
+      image(pic10, colorX2, colorY2, colorWidth2, colorHeight2*2);
+    }
+    //
+    if ( mouseX>colorX3 && mouseX<colorX3+colorWidth3 && mouseY>colorY3 && mouseY<colorY3+colorHeight3*2 ) {
+      buttonFill = gray;
+    } else {
+      buttonFill = resetWhite;
+    }//End Hover-over
+    fill(buttonFill);
+    rect(colorX3, colorY3, colorWidth3, colorHeight3*2);
+    fill(resetButtonColour);
+    image( pic12, colorX3, colorY3, colorWidth3, colorHeight3*2 );
+    //
+    if ( mouseX>eraserX && mouseX<eraserX+eraserWidth && mouseY>eraserY && mouseY<eraserY+eraserHeight ) {
+      buttonFill = gray;
+    } else {
+      buttonFill = resetWhite;
+    }//End Hover-over
+    if ( mute==true && music==true ) {
+      fill(buttonFill);
+      rect(eraserX, eraserY, eraserWidth, eraserHeight);
+      fill(resetButtonColour);
+      image(pic13, eraserX, eraserY, eraserWidth, eraserHeight);
+    } else {
+      fill(buttonFill);
+      rect(eraserX, eraserY, eraserWidth, eraserHeight);
+      fill(resetButtonColour);
+      image(pic14, eraserX, eraserY, eraserWidth, eraserHeight);
+    }
+  }
+  //
   if ( draw==true && mousePressed==true && mouseX> drawingSurfaceX && mouseX< drawingSurfaceX+drawingSurfaceWidth && mouseY>drawingSurfaceY && mouseY<drawingSurfaceY+drawingSurfaceHeight ) {
     colorSetup(); 
     strokeSetup();
@@ -758,6 +889,7 @@ void draw()
     strokeWeight(1);
     stroke(black);
   }
+
   //Example drawing tool {stroke(blue); strokeWeight(); line(mouseX, mouseY, pmouseX, pmouseY); stroke(black);}
   //
 }//End draw
@@ -1077,7 +1209,9 @@ void mousePressed()
       colorSelect=true;
       colorSelect1=false;
       backGround=false;
+      music=false;
     } else {
+      music=false;
       backGround=true;
       colorSelect=false;
       colorSelect1=false;
@@ -1088,12 +1222,29 @@ void mousePressed()
       colorSelect1=true;
       colorSelect=false;
       backGround=false;
+      music=false;
     } else {
+      music=false;
       backGround=true;
       colorSelect1=false;
       colorSelect=false;
     }
   }
+  //
+  if ( mouseX>buttonX3 && mouseX<buttonX3+buttonWidth3 && mouseY>buttonY3 && mouseY<buttonY3+buttonHeight3 ) {
+    if ( music==false ) { 
+      music=true;
+      colorSelect=false;
+      colorSelect1=false;
+      backGround=false;
+    } else {
+      music=false;
+      backGround=true;
+      colorSelect1=false;
+      colorSelect=false;
+    }
+  }
+  //
   if ( mouseX>imgX4 && mouseX<imgX4+picWidthAdjusted4 && mouseY>imgY4 && mouseY<imgY4+picHeightAdjusted4 && colorSelect1==true ) {
     if ( piC4==false ) {
       fill(backgroundColor);
@@ -1147,6 +1298,31 @@ void mousePressed()
       fill(resetWhite);
     }
   }
+  if ( mouseX>colorX && mouseX<colorX+colorWidth && mouseY>colorY && mouseY<colorY+colorHeight*2 && music==true ) song1.loop();
+  if ( mouseX>colorX1 && mouseX<colorX1+colorWidth1 && mouseY>colorY1 && mouseY<colorY1+colorHeight1*2 && music==true ) song1.skip(-10000);//-10 sec
+  if ( mouseX>colorX3 && mouseX<colorX3+colorWidth3 && mouseY>colorY3 && mouseY<colorY3+colorHeight3*2 && music==true ) song1.skip(10000);//10 sec
+  //
+  if ( mouseX>colorX2 && mouseX<colorX2+colorWidth2 && mouseY>colorY2 && mouseY<colorY2+colorHeight2*2 && music==true ) {//PAUSE Button
+    if ( song1.isPlaying() ) {
+      song1.pause();
+      play=true;
+    } else if ( song1.position() >= song1.length() - song1.length()*1/10 ) {
+      song1.rewind();
+      song1.play();
+    } else {
+      song1.play();
+      play=false;
+    }
+  }
+  if ( mouseX>eraserX && mouseX<eraserX+eraserWidth && mouseY>eraserY && mouseY<eraserY+eraserHeight && music==true ) {//Mute Button
+    if ( song1.isMuted() ) {
+      song1.unmute();
+      mute=false;
+    } else {
+      song1.mute();
+      mute=true;
+    }
+  }//
   //
 }//End mousePressed
 //

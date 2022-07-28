@@ -6,6 +6,6 @@ void backColorPattern() {
    image(pic5, drawingSurfaceX, drawingSurfaceY, drawingSurfaceWidth, drawingSurfaceHeight );
  }
  if ( piC6==true ) {
-   image(pic6, drawingSurfaceX, drawingSurfaceY, drawingSurfaceWidth, drawingSurfaceHeight );
+   image(pic6, drawingSurfaceX, drawingSurfaceY, drawingSurfaceWidth*2/3, drawingSurfaceHeight );
  }
 }
