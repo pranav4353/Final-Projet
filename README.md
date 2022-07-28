@@ -1,8 +1,11 @@
 # Final-Projet
 
 To Do List
+- [x] mp3 player
+- [x] mp3 buttons (pause, play, mute, etc)
+- [x] sound effects during buttenpresses
 - [x] line drawing tool
-- [ ] circle stamping tool
+- [x] circle stamping tool
 - [x] size selector for tools
 - [x] colour selector for tools
 - [x] clear/reset button
